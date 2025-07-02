@@ -31,7 +31,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 5px rgba(3,3,3,0.4);
+  box-shadow: 0 0.1rem 0.4rem rgba(3, 3, 3, 0.4);
 }
 
 section {
@@ -44,40 +44,46 @@ section {
   font-weight: bold;
 }
 
-.logo span {
-  color: #555;
-}
-
 .btn {
   display: inline-block;
-  background-color: #0077cc;
-  color: #fff;
-  padding: 0.4rem 0.6rem;
-  border-radius: 0.5rem;
+  /* Using your accent blue for the button background */
+  background-color: #3498DB; /* Your professional blue accent */
+  color: #fff; /* White text for contrast */
+  padding: 0.4rem 0.6rem; /* Already in rem */
+  border-radius: 0.5rem; /* Converted from 8px to 0.5rem */
   font-weight: 600;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Added color to transition */
   text-align: center;
+  text-decoration: none; /* Ensure no underline, even though a is defined elsewhere */
+  cursor: pointer; /* Makes it clear it's clickable, even if it's an <a> */
 }
 
 .btn:hover {
-  background-color: #005fa3;
-  color: #eee;  
+  background-color: #2072B3;
+  color: #F0F4F8;
 }
 
 nav ul {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 nav a {
   text-decoration: none;
   color: #333;
   font-weight: 500;
+
+  display: block;
+  padding: 0.8rem 1.2rem;
+
+  transition: all 0.3s ease;
 }
 
 nav a:hover {
   color: #0077cc;
+  background-color: #EBF5FB;
+  border-radius: 0.5rem;
 }
 
 .hamburger {
@@ -124,9 +130,9 @@ h1 {
     background: #fff;
     position: absolute;
     top: 100%;
-    right: 1.25rem;
+    right: 1rem;
     width:  12.5rem;
-    box-shadow: 0 2px 5px rgba(3,3,3,0.4);
+    box-shadow: 0 0.1rem 0.4rem rgba(3,3,3,0.4);
     padding: 1rem;
     z-index: 1001;
   }
