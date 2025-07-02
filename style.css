@@ -110,12 +110,26 @@ h1 {
 }
 
 .contact-icons a {
-  color: #333;
-  transition: color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #3498DB;
+  color: #fff;
+  
+  padding: 0.6rem;
+  
+  border-radius: 0.5rem;
+  
+  transition: background-color 0.3s ease, color 0.3s ease;
+  
+  text-decoration: none;
+  cursor: pointer; 
 }
 
 .contact-icons a:hover {
-  color: #0077cc;
+  background-color: #2072B3;
+  color: #F0F4F8;
 }
 
 .contact-icons i {
@@ -149,3 +163,6 @@ h1 {
     font-size: 2rem;
   }
 }
+
+/* TODO List */
+/* (1) Add more visual seperation between sections (dotted line, change in background colour, etc.) */
