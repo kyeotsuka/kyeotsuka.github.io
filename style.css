@@ -34,6 +34,11 @@ header {
   box-shadow: 0 2px 5px rgba(3,3,3,0.4);
 }
 
+section {
+  margin-bottom: 4rem;
+  scroll-margin-top: 100px;
+}
+
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
@@ -94,7 +99,7 @@ h1 {
   font-weight: 900;
 }
 
-/* Responsive */
+/* Responsive (mobile) */
 @media (max-width: 768px) {
   .nav-links {
     display: none;
