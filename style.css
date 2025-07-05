@@ -1,37 +1,71 @@
-/* Reset */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  font-family: sans-serif;
-  line-height: 1.6;
   background: #fff;
   color: #333;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
 }
 
 a {
-  text-decoration: none;
   color: #333;
   font-weight: 500;
+  text-decoration: none;
 }
 
 a:hover {
   color: #0077cc;
 }
 
+h1 {
+  margin-bottom: 1rem;
+  font-weight: 900;
+}
+
 header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background: #fff;
   padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   position: sticky;
   top: 0;
   z-index: 1000;
   box-shadow: 0 0.1rem 0.4rem rgba(3, 3, 3, 0.4);
+}
+
+nav ul {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+}
+
+nav a {
+  display: block;
+  padding: 0.8rem 1.2rem;
+  color: #333;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  background-color: #EBF5FB;
+  color: #0077cc;
+  border-radius: 0.5rem;
+}
+
+main {
+  padding: 2rem;
+}
+
+section {
+  margin-bottom: 4rem;
+  scroll-margin-top: 6.25rem;
 }
 
 #about, #projects, #contact {
@@ -44,6 +78,35 @@ header {
   padding: 3rem 2rem;
 }
 
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.4rem 0.6rem;
+  background-color: #3498DB;
+  color: #fff;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #2072B3;
+  color: #F0F4F8;
+}
+
+.hamburger {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -52,21 +115,25 @@ header {
 }
 
 .project-card {
-  background-color: #FFFFFF;
-  border: 1px solid #E0E0E0;
-  border-radius: 0.5rem;
-  padding: 1.5rem;
-  box-shadow: 0 0.125rem 0.3125rem rgba(0,0,0,0.08);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+  padding: 1.5rem;
+  background-color: #FFFFFF;
+  border: 1px solid #E0E0E0;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.125rem 0.3125rem rgba(0,0,0,0.08);
+  font-family: "Fira Code", "Source Code Pro", "IBM Plex Mono", Consolas, "Courier New", monospace;
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 .project-card h2 {
   margin-top: 0;
   margin-bottom: 0.8rem;
   color: #2C3E50;
+  font-family: "Fira Code", "Source Code Pro", "IBM Plex Mono", Consolas, "Courier New", monospace;
 }
 
 .project-card p {
@@ -78,73 +145,6 @@ header {
   align-self: flex-start;
 }
 
-section {
-  margin-bottom: 4rem;
-  scroll-margin-top: 6.25rem;
-}
-
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.btn {
-  display: inline-block;
-  background-color: #3498DB;
-  color: #fff;
-  padding: 0.4rem 0.6rem;
-  border-radius: 0.5rem;
-  font-weight: 600;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background-color: #2072B3;
-  color: #F0F4F8;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
-}
-
-nav a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-
-  display: block;
-  padding: 0.8rem 1.2rem;
-
-  transition: all 0.3s ease;
-}
-
-nav a:hover {
-  color: #0077cc;
-  background-color: #EBF5FB;
-  border-radius: 0.5rem;
-}
-
-.hamburger {
-  display: none;
-  font-size: 1.8rem;
-  cursor: pointer;
-}
-
-main {
-  padding: 2rem;
-}
-
-h1 {
-  margin-bottom: 1rem;
-  font-weight: 900;
-}
-
-/* Contact Icons */
 .contact-icons {
   display: flex;
   gap: 1.5rem;
@@ -156,18 +156,13 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-
+  padding: 0.6rem;
   background-color: #3498DB;
   color: #fff;
-  
-  padding: 0.6rem;
-  
   border-radius: 0.5rem;
-  
-  transition: background-color 0.3s ease, color 0.3s ease;
-  
   text-decoration: none;
   cursor: pointer; 
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .contact-icons a:hover {
@@ -179,26 +174,25 @@ h1 {
   font-size: 2rem;
 }
 
-/* Responsive (mobile) */
 @media (max-width: 48rem) {
+  .hamburger {
+    display: block;
+  }
+
   .nav-links {
     display: none;
     flex-direction: column;
-    background: #fff;
     position: absolute;
     top: 100%;
     right: 1rem;
     width:  12.5rem;
-    box-shadow: 0 0.1rem 0.4rem rgba(3,3,3,0.4);
     padding: 1rem;
+    background: #fff;
+    box-shadow: 0 0.1rem 0.4rem rgba(3,3,3,0.4);
     z-index: 1001;
   }
 
   .nav-links.active {
     display: flex;
-  }
-
-  .hamburger {
-    display: block;
   }
 }
