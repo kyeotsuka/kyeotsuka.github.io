@@ -34,6 +34,50 @@ header {
   box-shadow: 0 0.1rem 0.4rem rgba(3, 3, 3, 0.4);
 }
 
+#about, #projects, #contact {
+  background-color: #FFFFFF;
+  padding: 3rem 2rem; 
+}
+
+#skills, #experience {
+  background-color: #F0F4F8;
+  padding: 3rem 2rem;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.project-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E0E0E0;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 0.125rem 0.3125rem rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.project-card h2 {
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+  color: #2C3E50;
+}
+
+.project-card p {
+  margin-bottom: 0.8rem;
+}
+
+.project-card .btn {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
 section {
   margin-bottom: 4rem;
   scroll-margin-top: 6.25rem;
@@ -46,16 +90,15 @@ section {
 
 .btn {
   display: inline-block;
-  /* Using your accent blue for the button background */
-  background-color: #3498DB; /* Your professional blue accent */
-  color: #fff; /* White text for contrast */
-  padding: 0.4rem 0.6rem; /* Already in rem */
-  border-radius: 0.5rem; /* Converted from 8px to 0.5rem */
+  background-color: #3498DB;
+  color: #fff;
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.5rem;
   font-weight: 600;
-  transition: background-color 0.3s ease, color 0.3s ease; /* Added color to transition */
+  transition: background-color 0.3s ease, color 0.3s ease;
   text-align: center;
-  text-decoration: none; /* Ensure no underline, even though a is defined elsewhere */
-  cursor: pointer; /* Makes it clear it's clickable, even if it's an <a> */
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .btn:hover {
@@ -133,7 +176,7 @@ h1 {
 }
 
 .contact-icons i {
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 /* Responsive (mobile) */
@@ -158,11 +201,4 @@ h1 {
   .hamburger {
     display: block;
   }
-
-  .contact-icons i {
-    font-size: 2rem;
-  }
 }
-
-/* TODO List */
-/* (1) Add more visual seperation between sections (dotted line, change in background colour, etc.) */
