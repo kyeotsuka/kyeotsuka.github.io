@@ -5,20 +5,16 @@
 }
 
 body {
-  background: #fff;
-  color: #333;
+  background: #f9fdff;
+  color: #001f3f;
   font-family: 'Roboto', sans-serif;
   line-height: 1.6;
 }
 
 a {
-  color: #333;
+  color: #001f3f;
   font-weight: 500;
   text-decoration: none;
-}
-
-a:hover {
-  color: #0077cc;
 }
 
 h1 {
@@ -34,12 +30,11 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #fff;
+  background: #001f3f;
   padding: 1rem 2rem;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 0.1rem 0.4rem rgba(3, 3, 3, 0.4);
 }
 
 nav ul {
@@ -51,16 +46,10 @@ nav ul {
 nav a {
   display: block;
   padding: 0.8rem 1.2rem;
-  color: #333;
+  color: #f9fdff;
   font-weight: 500;
   text-decoration: none;
   border-radius: 0.5rem;
-  transition: background-color 0.3s ease, color 0.1s ease;
-}
-
-nav a:hover {
-  background-color: #3498DB;
-  color: #fff;
 }
 
 main {
@@ -70,58 +59,44 @@ main {
 }
 
 section {
-  margin-bottom: 4rem;
+  background-color: #f9fdff;
+  padding: 3rem 2rem;
   scroll-margin-top: 6.25rem;
 }
 
-#about, #projects, #contact {
-  background-color: #FFFFFF;
-  padding: 3rem 2rem; 
-}
-
-#skills, #experience {
-  background-color: #F0F4F8;
-  padding: 3rem 2rem;
+section:not(:last-of-type)::after {
+  content: '';
+  display: block;
+  width: 200px;
+  height: 2px;
+  margin: 6rem auto 0;
+  background-color: #001f3f;
 }
 
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
+  color: #f9fdff;
 }
 
 .btn {
   display: inline-block;
   padding: 0.4rem 0.6rem;
-  background-color: #3498DB;
-  color: #fff;
+  background-color: #001f3f;
+  color: #f9fdff;
   border-radius: 0.5rem;
   font-weight: 600;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.btn:hover {
-  background-color: #2072B3;
-  color: #F0F4F8;
-}
-
-/* --- Start: Hamburger Icon Styles --- */
 .hamburger {
   display: none;
   padding: 15px;
   cursor: pointer;
-  transition-property: opacity, filter;
-  transition-duration: 0.15s;
-  transition-timing-function: linear;
-  font: inherit;
-  color: inherit;
-  text-transform: none;
   background-color: transparent;
   border: 0;
-  margin: 0;
-  overflow: visible;
 }
 
 .hamburger-box {
@@ -136,19 +111,11 @@ section {
 .hamburger-inner::after {
   width: 30px;
   height: 3px;
-  background-color: #333;
+  background-color: #f9fdff;
   border-radius: 4px;
   position: absolute;
-  transition-property: transform, background-color;
-  transition-duration: 0.2s;
-  transition-timing-function: ease;
-}
-
-.hamburger-inner {
-  display: block;
-  top: 50%;
-  margin-top: -1.5px;
-  transition-duration: 0.075s;
+  transition-property: transform;
+  transition-duration: 0.22s;
   transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
 
@@ -160,38 +127,15 @@ section {
 
 .hamburger-inner::before {
   top: -10px;
-  transition: top 0.1s 0.25s ease-in, opacity 0.1s ease-in;
 }
 
 .hamburger-inner::after {
   bottom: -10px;
-  transition: bottom 0.1s 0.25s ease-in, transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
-}
-
-.hamburger.is-active .hamburger-inner,
-.hamburger.is-active .hamburger-inner::before,
-.hamburger.is-active .hamburger-inner::after {
-  background-color: #fff;
 }
 
 .hamburger.is-active .hamburger-inner {
   transform: rotate(225deg);
-  transition-delay: 0.12s;
-  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
 }
-
-.hamburger.is-active .hamburger-inner::before {
-  top: 0;
-  opacity: 0;
-  transition: top 0.1s ease-out, opacity 0.1s 0.12s ease-out;
-}
-
-.hamburger.is-active .hamburger-inner::after {
-  bottom: 0;
-  transform: rotate(-90deg);
-  transition: bottom 0.1s ease-out, transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
-}
-/* --- End: Hamburger Icon Styles --- */
 
 .projects-grid {
   display: grid;
@@ -206,10 +150,9 @@ section {
   justify-content: space-between;
   height: 100%;
   padding: 1.5rem;
-  background-color: #FFFFFF;
-  border: 1px solid #E0E0E0;
+  background-color: #f9fdff;
+  border: 1px solid #001f3f;
   border-radius: 0.5rem;
-  box-shadow: 0 0.125rem 0.3125rem rgba(0,0,0,0.08);
   font-family: "Fira Code", "Source Code Pro", "IBM Plex Mono", Consolas, "Courier New", monospace;
   font-size: 0.95rem;
   line-height: 1.5;
@@ -218,7 +161,7 @@ section {
 .project-card h2 {
   margin-top: 0;
   margin-bottom: 0.8rem;
-  color: #2C3E50;
+  color: #001f3f;
   font-family: "Fira Code", "Source Code Pro", "IBM Plex Mono", Consolas, "Courier New", monospace;
 }
 
@@ -242,18 +185,13 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.6rem;
-  background-color: #3498DB;
-  color: #fff;
+  width: 3.5rem;
+  height: 3.5rem;
+  background-color: #001f3f;
+  color: #f9fdff;
   border-radius: 0.5rem;
   text-decoration: none;
-  cursor: pointer; 
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.contact-icons a:hover {
-  background-color: #2072B3;
-  color: #F0F4F8;
+  cursor: pointer;
 }
 
 .contact-icons i {
@@ -283,7 +221,7 @@ section {
     width: 100%;
     height: 100vh;
     padding: 1rem;
-    background: #3498DB;
+    background: #001f3f;
     z-index: 1000;
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out, visibility 0.3s;
@@ -297,12 +235,8 @@ section {
   .nav-links a {
     font-size: 1.5rem;
     padding: 1.5rem;
-    color: #fff;
+    color: #f9fdff;
     border-radius: 0.5rem;
-  }
-
-  .nav-links a:hover {
-    background-color: #2072B3;
   }
 
   p {
