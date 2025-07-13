@@ -29,10 +29,34 @@ h2 {
   margin-bottom: 0.8rem;
 }
 
-p + h2 {
-  margin-top: 1.5rem;
+.skills-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
 }
 
+.skills-list li {
+  background-color: #f9fdff;
+  color: #001f3f;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #001f3f;
+  font-size: 0.95rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+h2 + .skills-list {
+  margin-top: 1rem;
+}
+
+p + h2,
+ul + h2 {
+  margin-top: 2rem;
+}
 p {
   text-align: justify;
 }
