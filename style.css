@@ -1,3 +1,8 @@
+:root {
+  --primary-colour: #001f3f;
+  --background-colour: #f9fdff;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,14 +10,14 @@
 }
 
 body {
-  background: #f9fdff;
-  color: #001f3f;
+  background: var(--background-colour);
+  color: var(--primary-colour);
   font-family: 'Roboto', sans-serif;
   line-height: 1.6;
 }
 
 a {
-  color: #001f3f;
+  color: var(--primary-colour);
   font-weight: 500;
   text-decoration: none;
 }
@@ -39,11 +44,11 @@ h2 {
 }
 
 .tag-list li {
-  background-color: #f9fdff;
-  color: #001f3f;
+  background-color: var(--background-colour);
+  color: var(--primary-colour);
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
-  border: 1px solid #001f3f;
+  border: 1px solid var(--primary-colour);
   font-size: 0.95rem;
   font-weight: 500;
   white-space: nowrap;
@@ -65,7 +70,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #001f3f;
+  background: var(--primary-colour);
   padding: 1rem 2rem;
   position: sticky;
   top: 0;
@@ -81,7 +86,7 @@ nav ul {
 nav a {
   display: block;
   padding: 0.8rem 1.2rem;
-  color: #f9fdff;
+  color: var(--background-colour);
   font-weight: 500;
   text-decoration: none;
   border-radius: 0.5rem;
@@ -94,7 +99,7 @@ main {
 }
 
 section {
-  background-color: #f9fdff;
+  background-color: var(--background-colour);
   padding: 3rem 2rem;
   scroll-margin-top: 6.25rem;
 }
@@ -105,20 +110,20 @@ section:not(:last-of-type)::after {
   width: 200px;
   height: 2px;
   margin: 6rem auto 0;
-  background-color: #001f3f;
+  background-color: var(--primary-colour);
 }
 
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #f9fdff;
+  color: var(--background-colour);
 }
 
 .btn {
   display: inline-block;
   padding: 0.4rem 0.6rem;
-  background-color: #001f3f;
-  color: #f9fdff;
+  background-color: var(--primary-colour);
+  color: var(--background-colour);
   border-radius: 0.5rem;
   font-weight: 600;
   text-align: center;
@@ -146,7 +151,7 @@ section:not(:last-of-type)::after {
 .hamburger-inner::after {
   width: 30px;
   height: 3px;
-  background-color: #f9fdff;
+  background-color: var(--background-colour);
   border-radius: 4px;
   position: absolute;
   transition-property: transform;
@@ -185,8 +190,8 @@ section:not(:last-of-type)::after {
   justify-content: space-between;
   height: 100%;
   padding: 1.5rem;
-  background-color: #f9fdff;
-  border: 1px solid #001f3f;
+  background-color: var(--background-colour);
+  border: 1px solid var(--primary-colour);
   border-radius: 0.5rem;
   font-family: "Fira Code", "Source Code Pro", "IBM Plex Mono", Consolas, "Courier New", monospace;
   font-size: 0.95rem;
@@ -196,7 +201,7 @@ section:not(:last-of-type)::after {
 .project-card h2 {
   margin-top: 0;
   margin-bottom: 0.8rem;
-  color: #001f3f;
+  color: var(--primary-colour);
   font-family: "Fira Code", "Source Code Pro", "IBM Plex Mono", Consolas, "Courier New", monospace;
 }
 
@@ -222,8 +227,8 @@ section:not(:last-of-type)::after {
   align-items: center;
   width: 3.5rem;
   height: 3.5rem;
-  background-color: #001f3f;
-  color: #f9fdff;
+  background-color: var(--primary-colour);
+  color: var(--background-colour);
   border-radius: 0.5rem;
   text-decoration: none;
   cursor: pointer;
@@ -256,7 +261,7 @@ section:not(:last-of-type)::after {
     width: 100%;
     height: 100vh;
     padding: 1rem;
-    background: #001f3f;
+    background: var(--primary-colour);
     z-index: 1000;
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out, visibility 0.3s;
@@ -270,7 +275,7 @@ section:not(:last-of-type)::after {
   .nav-links a {
     font-size: 1.5rem;
     padding: 1.5rem;
-    color: #f9fdff;
+    color: var(--background-colour);
     border-radius: 0.5rem;
   }
 
