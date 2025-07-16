@@ -9,6 +9,10 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow-y: scroll; /* Prevents layout shift from scrollbar */
+}
+
 body {
   background: var(--background-colour);
   color: var(--primary-colour);
@@ -62,6 +66,7 @@ p + h2,
 ul + h2 {
   margin-top: 2rem;
 }
+
 p {
   text-align: justify;
 }
@@ -132,50 +137,37 @@ section:not(:last-of-type)::after {
 }
 
 .hamburger {
-  display: none;
-  padding: 15px;
-  cursor: pointer;
-  background-color: transparent;
+  display: none; /* Hidden by default on desktop */
+  background: transparent;
   border: 0;
+  cursor: pointer;
+  color: var(--background-colour);
+  width: 48px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
 }
 
-.hamburger-box {
-  width: 30px;
-  height: 24px;
-  display: inline-block;
-  position: relative;
+/* Styles for the new Google Font icons */
+.hamburger .material-symbols-outlined {
+  font-size: 2.5rem;
 }
 
-.hamburger-inner,
-.hamburger-inner::before,
-.hamburger-inner::after {
-  width: 30px;
-  height: 3px;
-  background-color: var(--background-colour);
-  border-radius: 4px;
-  position: absolute;
-  transition-property: transform;
-  transition-duration: 0.22s;
-  transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+/* By default, hide the 'close' icon */
+.hamburger .icon-close {
+  display: none;
 }
 
-.hamburger-inner::before,
-.hamburger-inner::after {
-  content: "";
+/* When the menu is active, show the 'close' icon... */
+.hamburger.is-active .icon-close {
   display: block;
 }
 
-.hamburger-inner::before {
-  top: -10px;
+/* ...and hide the 'menu' icon */
+.hamburger.is-active .icon-menu {
+  display: none;
 }
 
-.hamburger-inner::after {
-  bottom: -10px;
-}
-
-.hamburger.is-active .hamburger-inner {
-  transform: rotate(225deg);
-}
 
 .projects-grid {
   display: grid;
@@ -242,10 +234,9 @@ section:not(:last-of-type)::after {
   header {
     padding: 1rem;
   }
-  
+
   .hamburger {
-    display: inline-block;
-    position: relative;
+    display: flex; /* Show and activate flexbox on mobile */
     z-index: 1001;
   }
 
@@ -271,7 +262,7 @@ section:not(:last-of-type)::after {
     visibility: visible;
     transform: translateX(0);
   }
-  
+
   .nav-links a {
     font-size: 1.5rem;
     padding: 1.5rem;
