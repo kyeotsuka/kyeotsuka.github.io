@@ -10,7 +10,7 @@
 }
 
 html {
-  overflow-y: scroll; /* Prevents layout shift from scrollbar */
+  overflow-y: scroll;
 }
 
 body {
@@ -112,7 +112,7 @@ section {
 section:not(:last-of-type)::after {
   content: '';
   display: block;
-  width: 200px;
+  width: 150px;
   height: 2px;
   margin: 6rem auto 0;
   background-color: var(--primary-colour);
@@ -137,7 +137,7 @@ section:not(:last-of-type)::after {
 }
 
 .hamburger {
-  display: none; /* Hidden by default on desktop */
+  display: none;
   background: transparent;
   border: 0;
   cursor: pointer;
@@ -148,32 +148,64 @@ section:not(:last-of-type)::after {
   justify-content: center;
 }
 
-/* Styles for the new Google Font icons */
 .hamburger .material-symbols-outlined {
   font-size: 2.5rem;
 }
 
-/* By default, hide the 'close' icon */
 .hamburger .icon-close {
   display: none;
 }
 
-/* When the menu is active, show the 'close' icon... */
 .hamburger.is-active .icon-close {
   display: block;
 }
 
-/* ...and hide the 'menu' icon */
 .hamburger.is-active .icon-menu {
   display: none;
 }
 
-
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+/* --- New Carousel Styles --- */
+.carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
   margin-top: 2rem;
+}
+
+.carousel-window {
+  display: flex;
+  gap: 1.5rem; /* Space between cards */
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  /* Hide the scrollbar */
+  scrollbar-width: none; /* For Firefox */
+}
+
+.carousel-window::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+
+.carousel-window .project-card {
+  flex: 0 0 90%; /* On mobile, card takes up 90% of window */
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+}
+
+.carousel-button {
+  background-color: var(--primary-colour);
+  color: var(--background-colour);
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  flex-shrink: 0;
 }
 
 .project-card {
@@ -236,7 +268,7 @@ section:not(:last-of-type)::after {
   }
 
   .hamburger {
-    display: flex; /* Show and activate flexbox on mobile */
+    display: flex;
     z-index: 1001;
   }
 
@@ -269,8 +301,24 @@ section:not(:last-of-type)::after {
     color: var(--background-colour);
     border-radius: 0.5rem;
   }
+  
+  .carousel-container {
+    gap: 0.5rem; /* Reduce gap on mobile */
+  }
+  
+  .carousel-button {
+    width: 36px;
+    height: 36px;
+  }
 
   p {
     text-align: left;
+  }
+}
+
+/* On larger screens, give the card a fixed width */
+@media (min-width: 768px) {
+  .carousel-window .project-card {
+    flex-basis: 650px;
   }
 }

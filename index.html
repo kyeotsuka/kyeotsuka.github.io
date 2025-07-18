@@ -14,7 +14,7 @@
 </head>
 <body>
   <header>
-    <div class="logo">Kye Otsuka</div>
+    <a class="logo" href="#about">Kye Otsuka</a>
     <nav>
       <ul class="nav-links" id="nav-links">
         <li><a href="#about">About</a></li>
@@ -88,17 +88,37 @@
     <!-- Projects Section -->
     <section id="projects">
       <h1>Projects</h1>
-      <div class="projects-grid"> 
-        <div class="project-card"> 
-          <h2>Python Log Analyser</h2>
-          <p>A custom-built Python tool designed to analyse and summarise system log files for signs of anomalies and suspicious activity.</p>
-          <p><strong>Role:</strong> [Your specific role/contributions here]</p>
-          <p><strong>Tools:</strong> Python (regex, datetime, argparse)</p>
-          <p><strong>Challenges:</strong> [Briefly describe a challenge and your solution]</p>
-          <a href="https://github.com/kye-otsuka/Python-Log-Analyser" target="_blank" class="btn">View project</a>
-        </div>
+      <div class="carousel-container">
+        <button class="carousel-button prev" aria-label="Previous project">
+          <span class="material-symbols-outlined">arrow_back_ios</span>
+        </button>
+
+        <div class="carousel-window">
+          <div class="project-card">
+            <h2>Python Log Analyser</h2>
+            <p>A modular Python command-line tool that parses Apache access logs to detect and report on potential security threats.</p>
+            <p><strong>Role:</strong> Co-developed with Michael Aiwekhoe, with equal contributions across the project lifecycle.</p>
+            <p><strong>Tools:</strong> Python (regex, datetime, argparse)</p>
+            <p><strong>Challenges:</strong> Crafting a precise regex for reliable log parsing and developing logic to distinguish attack patterns from legitimate traffic.</p>
+            <a href="https://github.com/kyeotsuka/Python-Log-Analyser" target="_blank" class="btn">View project</a>
+          </div>
+
+          <div class="project-card">
+            <h2>Responsive Portfolio Website</h2>
+            <p>A clean, single-page portfolio website built from scratch to showcase my skills, projects, and experience. The site is fully responsive, ensuring a seamless experience on all devices.</p>
+            <p><strong>Role:</strong> Sole Developer</p>
+            <p><strong>Tools:</strong> HTML5, CSS3 (Flexbox, Grid), vanilla JavaScript</p>
+            <p><strong>Challenges:</strong> Implementing a mobile-first, responsive navigation menu with a smooth slide-in animation. A key challenge was debugging a subtle layout shift caused by the hamburger icon's changing dimensions, which was resolved by enforcing a fixed size on the button to stabilise the header height during the icon swap.</p>
+            <a href="https://github.com/kyeotsuka/kyeotsuka.github.io" target="_blank" class="btn">View project</a>
+          </div>
+          
+          </div>
+
+        <button class="carousel-button next" aria-label="Next project">
+          <span class="material-symbols-outlined">arrow_forward_ios</span>
+        </button>
       </div>
-    </section>
+      </section>
 
     <!-- Experience Section -->
     <section id="experience">
