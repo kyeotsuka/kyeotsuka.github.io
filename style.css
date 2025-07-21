@@ -144,12 +144,13 @@ section:not(:last-of-type)::after {
   color: var(--background-colour);
   width: 48px;
   height: 48px;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.hamburger .material-symbols-outlined {
-  font-size: 2.5rem;
+.hamburger i {
+  font-size: 1.75rem;
 }
 
 .hamburger .icon-close {
@@ -164,7 +165,7 @@ section:not(:last-of-type)::after {
   display: none;
 }
 
-/* --- New Carousel Styles --- */
+/* --- Carousel Styles --- */
 .carousel-container {
   display: flex;
   align-items: center;
@@ -206,6 +207,10 @@ section:not(:last-of-type)::after {
   justify-content: center;
   z-index: 10;
   flex-shrink: 0;
+}
+
+.carousel-button i {
+  font-size: 1.25rem;
 }
 
 .project-card {
@@ -320,5 +325,23 @@ section:not(:last-of-type)::after {
 @media (min-width: 768px) {
   .carousel-window .project-card {
     flex-basis: 650px;
+  }
+}
+
+/* On very small screens, make project cards more compact */
+@media (max-width: 550px) {
+  .project-card > p {
+    display: none; /* Hides all paragraph details */
+  }
+
+  .project-card {
+    /* Adjust card for the new compact view */
+    justify-content: space-between;
+    min-height: 180px; /* Ensures the card has a nice minimum size */
+    text-align: center; /* Centers the title */
+  }
+
+  .project-card .btn {
+    align-self: center; /* Centers the button */
   }
 }

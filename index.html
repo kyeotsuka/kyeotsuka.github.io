@@ -10,7 +10,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 <body>
   <header>
@@ -25,19 +24,17 @@
       </ul>
     </nav>
     <button class="hamburger" id="hamburger" aria-label="Menu" aria-controls="nav-links" aria-expanded="false">
-      <span class="material-symbols-outlined icon-menu">menu</span>
-      <span class="material-symbols-outlined icon-close">close</span>
+      <i class="fa-solid fa-bars icon-menu"></i>
+      <i class="fa-solid fa-xmark icon-close"></i>
     </button>
   </header>
   
   <main>
-    <!-- About Section -->
     <section id="about">
       <h1>About Me</h1>
       <p>I’m a BSc (Hons) Cyber Security and Forensic Computing student at the University of Portsmouth (2022–2025). With a strong foundation in digital investigations and systems security, I’m deeply committed to understanding and countering cyber threats. My core interests include digital forensics, malware analysis, and cyber threat intelligence. I thrive in environments where I can investigate complex problems and deliver clear, evidence-based solutions. What drives me is the real-world impact of digital security — protecting data, uncovering digital evidence, and maintaining trust in a digital world. I bring strong problem-solving skills, meticulous attention to detail, and a calm, analytical mindset under pressure.</p>
     </section>
 
-    <!-- Skills Section -->
     <section id="skills">
       <h1>Skills</h1>
       <h2>Programming Languages</h2>
@@ -85,12 +82,11 @@
       </ul>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects">
       <h1>Projects</h1>
       <div class="carousel-container">
         <button class="carousel-button prev" aria-label="Previous project">
-          <span class="material-symbols-outlined">arrow_back_ios</span>
+          <i class="fa-solid fa-chevron-left"></i>
         </button>
 
         <div class="carousel-window">
@@ -111,16 +107,14 @@
             <p><strong>Challenges:</strong> Implementing a mobile-first, responsive navigation menu with a smooth slide-in animation. A key challenge was debugging a subtle layout shift caused by the hamburger icon's changing dimensions, which was resolved by enforcing a fixed size on the button to stabilise the header height during the icon swap.</p>
             <a href="https://github.com/kyeotsuka/kyeotsuka.github.io" target="_blank" class="btn">View project</a>
           </div>
-          
-          </div>
+        </div>
 
         <button class="carousel-button next" aria-label="Next project">
-          <span class="material-symbols-outlined">arrow_forward_ios</span>
+          <i class="fa-solid fa-chevron-right"></i>
         </button>
       </div>
       </section>
 
-    <!-- Experience Section -->
     <section id="experience">
       <h1>Experience & Education</h1>
 
@@ -153,7 +147,6 @@
       Ensured safe and ethical handling of personal belongings and sensitive situations.</p>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact">
       <h1>Contact</h1>
       <div class="contact-icons">
