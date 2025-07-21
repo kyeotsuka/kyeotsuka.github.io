@@ -25,19 +25,21 @@ document.addEventListener('click', (event) => {
 navLinks.addEventListener('click', closeMobileMenu);
 
 
-// --- Project Carousel Logic ---
-const carouselWindow = document.querySelector('.carousel-window');
-if (carouselWindow) {
-  const prevButton = document.querySelector('.carousel-button.prev');
-  const nextButton = document.querySelector('.carousel-button.next');
+// --- Logic to handle ALL carousels on the page ---
+const carousels = document.querySelectorAll('.carousel-container');
 
-  nextButton.addEventListener('click', () => {
-    // Scroll by the width of the container
-    carouselWindow.scrollBy({ left: carouselWindow.clientWidth, behavior: 'smooth' });
-  });
+carousels.forEach(carousel => {
+  const carouselWindow = carousel.querySelector('.carousel-window');
+  const prevButton = carousel.querySelector('.carousel-button.prev');
+  const nextButton = carousel.querySelector('.carousel-button.next');
 
-  prevButton.addEventListener('click', () => {
-    // Scroll by the width of the container
-    carouselWindow.scrollBy({ left: -carouselWindow.clientWidth, behavior: 'smooth' });
-  });
-}
+  if (carouselWindow && prevButton && nextButton) {
+    nextButton.addEventListener('click', () => {
+      carouselWindow.scrollBy({ left: carouselWindow.clientWidth, behavior: 'smooth' });
+    });
+
+    prevButton.addEventListener('click', () => {
+      carouselWindow.scrollBy({ left: -carouselWindow.clientWidth, behavior: 'smooth' });
+    });
+  }
+});
