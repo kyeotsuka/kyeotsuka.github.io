@@ -22,6 +22,7 @@ document.addEventListener('click', (event) => {
   }
 });
 
+// Close menu when a link is clicked
 navLinks.addEventListener('click', closeMobileMenu);
 
 

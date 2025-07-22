@@ -1,6 +1,46 @@
 :root {
-  --primary-colour: #001f3f;
-  --background-colour: #f9fdff;
+  /* --- New Light Mode Colour Palette --- */
+  --colour-background: #f9fdff; /* White */
+  --colour-foreground: #001f3f; /* Navy Blue */
+
+  /* --- Typography --- */
+  --font-family-sans: 'Roboto', sans-serif;
+  --font-family-mono: "Fira Code", "Source Code Pro", "IBM Plex Mono", Consolas, "Courier New", monospace;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+
+  /* --- TYPE SCALE --- */
+  --font-size-p: 1rem;
+  --ratio-content: 1.250;
+  --font-size-h1: 6.854rem;
+  --font-size-h2: calc(var(--font-size-h3) * var(--ratio-content));
+  --font-size-h3: calc(var(--font-size-h4) * var(--ratio-content));
+  --font-size-h4: calc(var(--font-size-p) * var(--ratio-content));
+  --font-size-small: calc(var(--font-size-p) / 1.618);
+
+  /* --- Spacing --- */
+  --space-xxs: 0.4rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.8rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-xxl: 3rem;
+  
+  /* --- Borders & Radius --- */
+  --border-thin: 1px solid;
+  --border-thick: 2px solid;
+  --radius-main: 0.5rem;
+  --radius-circle: 50%;
+
+  /* --- Layout --- */
+  --max-width-container: 1100px;
+  --nav-width: 250px;
+
+  /* --- Transitions --- */
+  --transition-main: 0.3s ease-in-out;
 }
 
 * {
@@ -9,150 +49,146 @@
   box-sizing: border-box;
 }
 
+/* --- Text Selection Highlighting --- */
+::selection {
+  background-color: var(--colour-foreground);
+  color: var(--colour-background);
+}
+
 html {
-  overflow-y: scroll;
+  background: var(--colour-background);
 }
 
 body {
-  background: var(--background-colour);
-  color: var(--primary-colour);
-  font-family: 'Roboto', sans-serif;
-  line-height: 1.6;
+  display: flex;
+  background: var(--colour-background);
+  color: var(--colour-foreground);
+  font-family: var(--font-family-sans);
 }
 
 a {
-  color: var(--primary-colour);
-  font-weight: 500;
+  color: var(--colour-foreground);
+  font-weight: var(--font-weight-medium);
   text-decoration: none;
 }
 
-h1 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  font-weight: 900;
+/* --- Main Navigation (Sidebar) --- */
+nav {
+  width: var(--nav-width);
+  height: 100vh;
+  background: var(--colour-foreground); /* Nav is blue */
+  border-right: var(--border-thin) oklch(from var(--colour-background) l s h / 0.2);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xxl);
+  flex-shrink: 0;
+}
+
+.logo {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-h4);
   text-align: center;
-}
-
-h2 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 0.8rem;
-}
-
-.tag-list {
-  list-style: none;
-  padding: 0;
-  margin: 1rem 0 0 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-}
-
-.tag-list li {
-  background-color: var(--background-colour);
-  color: var(--primary-colour);
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  border: 1px solid var(--primary-colour);
-  font-size: 0.95rem;
-  font-weight: 500;
-  white-space: nowrap;
-}
-
-h2 + .skills-list {
-  margin-top: 1rem;
-}
-
-p + h2,
-ul + h2 {
-  margin-top: 2rem;
-}
-
-p {
-  text-align: justify;
-}
-
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: var(--primary-colour);
-  padding: 1rem 2rem;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  color: var(--colour-background); /* White text */
 }
 
 nav ul {
-  display: flex;
-  gap: 1rem;
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
 }
 
 nav a {
   display: block;
-  padding: 0.8rem 1.2rem;
-  color: var(--background-colour);
-  font-weight: 500;
-  text-decoration: none;
-  border-radius: 0.5rem;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-main);
+  color: var(--colour-background); /* White text */
+  transition: background-color var(--transition-main);
 }
 
+nav a:hover {
+  background-color: oklch(from var(--colour-background) l s h / 0.1);
+}
+
+/* --- Hamburger (Mobile Only) --- */
+.hamburger {
+  display: none;
+}
+
+/* --- Main Content & Scroll Snap --- */
 main {
-  padding: 2rem;
-  max-width: 1100px;
-  margin: 0 auto;
+  flex-grow: 1;
+  height: 100vh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
 }
 
 section {
-  background-color: var(--background-colour);
-  padding: 3rem 2rem;
-  margin-bottom: 3rem;
-  scroll-margin-top: 6.25rem;
+  height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-xl);
 }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--background-colour);
+.section-content {
+  width: 100%;
+  max-width: var(--max-width-container);
+  background-color: transparent;
+  padding: var(--space-xxl) var(--space-xl);
+  border-radius: var(--radius-main);
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.btn {
-  display: inline-block;
-  padding: 0.4rem 0.6rem;
-  background-color: var(--primary-colour);
-  color: var(--background-colour);
-  border-radius: 0.5rem;
-  font-weight: 600;
+/* --- Typography --- */
+p {
+  font-size: var(--font-size-p);
+  line-height: 1.7; /* Increased line spacing */
+  text-align: left; /* No more justify */
+  max-width: 70ch; /* Optimal line length */
+  margin-inline: auto; /* Centre the paragraph block if container is wider */
+}
+h1, h2, h3, h4 {
   text-align: center;
-  text-decoration: none;
-  cursor: pointer;
+}
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-black);
+  margin-bottom: var(--space-lg);
+  color: var(--colour-foreground);
+}
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-md);
 }
 
-.hamburger {
-  display: none; /* Correctly hidden by default */
-  background: transparent;
-  border: 0;
-  cursor: pointer;
-  color: var(--background-colour);
-  width: 48px;
-  height: 48px;
+/* --- Spacing Fix for Skills Section --- */
+.tag-list + h2 {
+    margin-top: var(--space-xl);
 }
 
-.hamburger i {
-  font-size: 1.75rem;
+/* --- Other Components --- */
+.tag-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-md) 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-sm);
 }
 
-.hamburger .icon-close {
-  display: none;
-}
-
-.hamburger.is-active .icon-close {
-  display: block;
-}
-
-.hamburger.is-active .icon-menu {
-  display: none;
+.tag-list li {
+  background-color: transparent;
+  color: var(--colour-foreground);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-main);
+  border: var(--border-thin) var(--colour-foreground);
 }
 
 /* --- Carousel Styles --- */
@@ -160,43 +196,49 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-  margin-top: 2rem;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
 }
 
 .carousel-window {
   display: flex;
-  gap: 1.5rem; /* Space between cards */
+  gap: var(--space-lg);
   overflow-x: auto;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
-  /* Hide the scrollbar */
-  scrollbar-width: none; /* For Firefox */
+  padding: var(--space-xs);
+  width: 100%;
+  scrollbar-width: none;
 }
 
 .carousel-window::-webkit-scrollbar {
-  display: none; /* For Chrome, Safari, and Opera */
+  display: none;
 }
 
 .carousel-window .project-card {
-  flex: 0 0 90%; /* On mobile, card takes up 90% of window */
+  flex: 0 0 100%;
   scroll-snap-align: center;
   scroll-snap-stop: always;
 }
 
 .carousel-button {
-  background-color: var(--primary-colour);
-  color: var(--background-colour);
-  border: none;
-  border-radius: 50%;
+  background-color: transparent;
+  color: var(--colour-foreground);
+  border: var(--border-thin) var(--colour-foreground);
+  border-radius: var(--radius-circle);
   width: 44px;
   height: 44px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10;
   flex-shrink: 0;
+  transition: all var(--transition-main);
+}
+
+.carousel-button:hover {
+  background-color: var(--colour-foreground);
+  color: var(--colour-background);
 }
 
 .carousel-button i {
@@ -206,135 +248,173 @@ section {
 .project-card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  padding: 1.5rem;
-  background-color: var(--background-colour);
-  border: 1px solid var(--primary-colour);
-  border-radius: 0.5rem;
-  font-family: "Fira Code", "Source Code Pro", "IBM Plex Mono", Consolas, "Courier New", monospace;
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-
-.project-card h2 {
-  margin-top: 0;
-  margin-bottom: 0.8rem;
-  color: var(--primary-colour);
-  font-family: "Fira Code", "Source Code Pro", "IBM Plex Mono", Consolas, "Courier New", monospace;
-}
-
-.project-card p {
-  margin-bottom: 0.8rem;
+  height: 380px;
+  padding: var(--space-lg);
+  background-color: transparent;
+  border: var(--border-thick) var(--colour-foreground);
+  border-radius: var(--radius-main);
+  font-family: var(--font-family-mono);
+  text-align: left;
 }
 
 .project-card .btn {
   margin-top: auto;
-  align-self: flex-start;
+  background-color: var(--colour-foreground);
+  color: var(--colour-background);
+  border-color: var(--colour-foreground);
+  font-weight: var(--font-weight-bold);
+  padding: var(--space-xxs) var(--space-sm);
 }
+
+.project-card .btn:hover {
+    background-color: transparent;
+    color: var(--colour-foreground);
+}
+
+.card-content {
+  flex-grow: 1;
+  overflow-y: auto;
+  min-height: 0;
+  margin-bottom: var(--space-md);
+  padding-right: var(--space-sm);
+}
+
+/* Themed Scrollbar */
+.card-content::-webkit-scrollbar {
+  width: 8px;
+}
+.card-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+.card-content::-webkit-scrollbar-thumb {
+  background-color: oklch(from var(--colour-foreground) l s h / 0.2);
+  border-radius: var(--radius-main);
+}
+.card-content::-webkit-scrollbar-thumb:hover {
+  background-color: oklch(from var(--colour-foreground) l s h / 0.4);
+}
+
 
 .contact-icons {
   display: flex;
-  gap: 1.5rem;
+  gap: var(--space-lg);
   align-items: center;
   justify-content: center;
-  margin-top: 1rem;
+  margin-top: var(--space-md);
 }
 
 .contact-icons a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 3.5rem;
-  height: 3.5rem;
-  background-color: var(--primary-colour);
-  color: var(--background-colour);
-  border-radius: 0.5rem;
-  text-decoration: none;
-  cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    background-color: transparent;
+    border: var(--border-thick) var(--colour-foreground);
+    border-radius: var(--radius-main);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--transition-main);
+}
+
+.contact-icons a:hover {
+    background-color: var(--colour-foreground);
 }
 
 .contact-icons i {
-  font-size: 2rem;
+    color: var(--colour-foreground);
+    font-size: 2rem;
+    transition: color var(--transition-main);
 }
 
-@media (max-width: 62.5rem) {
-  header {
-    padding: 1rem;
+.contact-icons a:hover i {
+    color: var(--colour-background);
+}
+
+/* --- Responsive Styles for Tablets & Mobiles --- */
+@media (max-width: 1024px) {
+  body {
+    display: block;
   }
 
-  .hamburger {
-    display: flex; /* Displayed as a flex container on mobile */
-    align-items: center;
-    justify-content: center;
-    z-index: 1001;
-  }
-
-  .nav-links {
-    display: flex;
-    visibility: hidden;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  /* Mobile Navigation */
+  nav {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
-    padding: 1rem;
-    background: var(--primary-colour);
+    height: 100%;
     z-index: 1000;
-    transform: translateX(100%);
-    transition: transform 0.3s ease-in-out, visibility 0.3s;
+    background: var(--colour-foreground);
+    transform: translateX(-100%);
+    transition: transform var(--transition-main);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
-  .nav-links.active {
-    visibility: visible;
+  nav.active {
     transform: translateX(0);
   }
+  
+  nav ul {
+    text-align: center;
+  }
 
-  .nav-links a {
-    font-size: 1.5rem;
-    padding: 1.5rem;
-    color: var(--background-colour);
-    border-radius: 0.5rem;
+  nav a {
+    font-size: var(--font-size-h3);
+    padding: var(--space-md);
+  }
+
+  .hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: var(--space-md);
+    right: var(--space-md);
+    z-index: 1001;
+    background: var(--colour-background);
+    border: var(--border-thin) var(--colour-foreground);
+    border-radius: var(--radius-main);
+    color: var(--colour-foreground);
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+  }
+  .hamburger i { font-size: 1.75rem; }
+  .hamburger .icon-close { display: none; }
+  .hamburger.is-active .icon-close { display: block; }
+  .hamburger.is-active .icon-menu { display: none; }
+
+  /* Layout and scroll snap adjustments */
+  main {
+    height: auto;
+    overflow-y: visible;
+    scroll-snap-type: none;
+  }
+
+  section {
+    height: auto;
+    min-height: 100vh;
+    scroll-snap-align: none;
+    padding: var(--space-xl); /* Increased padding for tablets */
   }
   
-  .carousel-container {
-    gap: 0.5rem; /* Reduce gap on mobile */
+  .section-content {
+    padding: var(--space-xl); /* Increased padding for tablets */
+    max-height: none;
+  }
+
+  /* Typography fix for tablets and mobile */
+  p {
+    text-align: left;
+    margin-inline: 0;
+    max-width: none; /* Allows paragraph to fill its container */
   }
   
   .carousel-button {
-    width: 36px;
-    height: 36px;
-  }
-
-  p {
-    text-align: left;
-  }
-}
-
-/* On larger screens, give the card a fixed width */
-@media (min-width: 768px) {
-  .carousel-window .project-card {
-    flex-basis: 650px;
-  }
-}
-
-/* On very small screens, make project cards more compact */
-@media (max-width: 550px) {
-  .project-card > p {
-    display: none; /* Hides all paragraph details */
-  }
-
-  .project-card {
-    /* Adjust card for the new compact view */
-    justify-content: space-between;
-    min-height: 180px; /* Ensures the card has a nice minimum size */
-    text-align: center; /* Centers the title */
-  }
-
-  .project-card .btn {
-    align-self: center; /* Centers the button */
+    display: none;
   }
 }

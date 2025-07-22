@@ -12,163 +12,181 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
+  <!-- The Hamburger is now separate for mobile-first control -->
+  <button class="hamburger" id="hamburger" aria-label="Menu" aria-controls="nav-links" aria-expanded="false">
+    <i class="fa-solid fa-bars icon-menu"></i>
+    <i class="fa-solid fa-xmark icon-close"></i>
+  </button>
+  
+  <nav id="nav-links">
     <a class="logo" href="#about">Kye Otsuka</a>
-    <nav>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-    <button class="hamburger" id="hamburger" aria-label="Menu" aria-controls="nav-links" aria-expanded="false">
-      <i class="fa-solid fa-bars icon-menu"></i>
-      <i class="fa-solid fa-xmark icon-close"></i>
-    </button>
-  </header>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
   
   <main>
     <section id="about">
-      <h1>About Me</h1>
-      <p>I’m a BSc (Hons) Cyber Security and Forensic Computing student at the University of Portsmouth (2022–2025). With a strong foundation in digital investigations and systems security, I’m deeply committed to understanding and countering cyber threats. My core interests include digital forensics, malware analysis, and cyber threat intelligence. I thrive in environments where I can investigate complex problems and deliver clear, evidence-based solutions. What drives me is the real-world impact of digital security — protecting data, uncovering digital evidence, and maintaining trust in a digital world. I bring strong problem-solving skills, meticulous attention to detail, and a calm, analytical mindset under pressure.</p>
+      <div class="section-content">
+        <h1>About Me</h1>
+        <p>I’m a BSc (Hons) Cyber Security and Forensic Computing student at the University of Portsmouth (2022–2025). With a strong foundation in digital investigations and systems security, I’m deeply committed to understanding and countering cyber threats. My core interests include digital forensics, malware analysis, and cyber threat intelligence. I thrive in environments where I can investigate complex problems and deliver clear, evidence-based solutions. What drives me is the real-world impact of digital security — protecting data, uncovering digital evidence, and maintaining trust in a digital world. I bring strong problem-solving skills, meticulous attention to detail, and a calm, analytical mindset under pressure.</p>
+      </div>
     </section>
 
     <section id="skills">
-      <h1>Skills</h1>
-      <h2>Programming Languages</h2>
-      <ul class="tag-list">
-        <li>Python</li>
-        <li>Java</li>
-        <li>C</li>
-      </ul>
+      <div class="section-content">
+        <h1>Skills</h1>
+        <h2>Programming Languages</h2>
+        <ul class="tag-list">
+          <li>Python</li>
+          <li>Java</li>
+          <li>C</li>
+        </ul>
 
-      <h2>Tools & Technologies</h2>
-      <ul class="tag-list">
-        <li>Wireshark</li>
-        <li>Ghidra</li>
-        <li>Autopsy</li>
-        <li>EnCase</li>
-        <li>FTK Imager</li>
-        <li>Metasploit</li>
-        <li>Splunk</li>
-        <li>VirtualBox</li>
-        <li>Linux (Kali, Ubuntu)</li>
-        <li>Windows Server</li>
-        <li>SIEM tools</li>
-      </ul>
+        <h2>Tools & Technologies</h2>
+        <ul class="tag-list">
+          <li>Wireshark</li>
+          <li>Ghidra</li>
+          <li>Autopsy</li>
+          <li>EnCase</li>
+          <li>FTK Imager</li>
+          <li>Metasploit</li>
+          <li>Splunk</li>
+          <li>VirtualBox</li>
+          <li>Linux (Kali, Ubuntu)</li>
+          <li>Windows Server</li>
+          <li>SIEM tools</li>
+        </ul>
 
-      <h2>Concepts & Methodologies</h2>
-      <ul class="tag-list">
-        <li>Digital Forensics</li>
-        <li>Network Security</li>
-        <li>Incident Response</li>
-        <li>OSINT</li>
-        <li>Malware Analysis</li>
-        <li>Vulnerability Assessment</li>
-        <li>Cryptography</li>
-        <li>Reverse Engineering</li>
-      </ul>
-
-      <h2>Soft Skills</h2>
-      <ul class="tag-list">
-        <li>Critical thinking</li>
-        <li>Analytical mindset</li>
-        <li>Adaptability</li>
-        <li>Teamwork</li>
-        <li>Communication</li>
-        <li>Attention to detail</li>
-      </ul>
+        <h2>Concepts & Methodologies</h2>
+        <ul class="tag-list">
+          <li>Digital Forensics</li>
+          <li>Network Security</li>
+          <li>Incident Response</li>
+          <li>OSINT</li>
+          <li>Malware Analysis</li>
+          <li>Vulnerability Assessment</li>
+          <li>Cryptography</li>
+          <li>Reverse Engineering</li>
+        </ul>
+        
+        <h2>Soft Skills</h2>
+        <ul class="tag-list">
+          <li>Critical thinking</li>
+          <li>Analytical mindset</li>
+          <li>Adaptability</li>
+          <li>Teamwork</li>
+          <li>Communication</li>
+          <li>Attention to detail</li>
+        </ul>
+      </div>
     </section>
 
     <section id="projects">
-      <h1>Projects</h1>
-      <div class="carousel-container">
-        <button class="carousel-button prev" aria-label="Previous project">
-          <i class="fa-solid fa-chevron-left"></i>
-        </button>
+      <div class="section-content">
+        <h1>Projects</h1>
+        <div class="carousel-container">
+          <button class="carousel-button prev" aria-label="Previous project">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
 
-        <div class="carousel-window">
-          <div class="project-card">
-            <h2>Python Log Analyser</h2>
-            <p>A modular Python command-line tool that parses Apache access logs to detect and report on potential security threats.</p>
-            <p><strong>Role:</strong> Co-developed with Michael Aiwekhoe, with equal contributions across the project lifecycle.</p>
-            <p><strong>Tools:</strong> Python (regex, datetime, argparse)</p>
-            <p><strong>Challenges:</strong> Crafting a precise regex for reliable log parsing and developing logic to distinguish attack patterns from legitimate traffic.</p>
-            <a href="https://github.com/kyeotsuka/Python-Log-Analyser" target="_blank" class="btn">View project</a>
+          <div class="carousel-window">
+            <div class="project-card">
+              <h2>Python Log Analyser</h2>
+              <div class="card-content">
+                <p>A modular Python command-line tool that parses Apache access logs to detect and report on potential security threats.</p>
+                <p><strong>Role:</strong> Co-developed with Michael Aiwekhoe, with equal contributions across the project lifecycle.</p>
+                <p><strong>Tools:</strong> Python (regex, datetime, argparse)</p>
+                <p><strong>Challenges:</strong> Crafting a precise regex for reliable log parsing and developing logic to distinguish attack patterns from legitimate traffic.</p>
+              </div>
+              <a href="https://github.com/kyeotsuka/Python-Log-Analyser" target="_blank" class="btn">View project</a>
+            </div>
+
+            <div class="project-card">
+              <h2>Responsive Portfolio Website</h2>
+              <div class="card-content">
+                <p>A clean, single-page portfolio website built from scratch to showcase my skills, projects, and experience. The site is fully responsive, ensuring a seamless experience on all devices.</p>
+                <p><strong>Role:</strong> Sole Developer</p>
+                <p><strong>Tools:</strong> HTML5, CSS3 (Flexbox, Grid), vanilla JavaScript</p>
+                <p><strong>Challenges:</strong> Implementing a mobile-first, responsive navigation menu with a smooth slide-in animation. A key challenge was debugging a subtle layout shift caused by the hamburger icon's changing dimensions, which was resolved by enforcing a fixed size on the button to stabilise the header height during the icon swap.</p>
+              </div>
+              <a href="https://github.com/kyeotsuka/kyeotsuka.github.io" target="_blank" class="btn">View project</a>
+            </div>
           </div>
 
-          <div class="project-card">
-            <h2>Responsive Portfolio Website</h2>
-            <p>A clean, single-page portfolio website built from scratch to showcase my skills, projects, and experience. The site is fully responsive, ensuring a seamless experience on all devices.</p>
-            <p><strong>Role:</strong> Sole Developer</p>
-            <p><strong>Tools:</strong> HTML5, CSS3 (Flexbox, Grid), vanilla JavaScript</p>
-            <p><strong>Challenges:</strong> Implementing a mobile-first, responsive navigation menu with a smooth slide-in animation. A key challenge was debugging a subtle layout shift caused by the hamburger icon's changing dimensions, which was resolved by enforcing a fixed size on the button to stabilise the header height during the icon swap.</p>
-            <a href="https://github.com/kyeotsuka/kyeotsuka.github.io" target="_blank" class="btn">View project</a>
-          </div>
+          <button class="carousel-button next" aria-label="Next project">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
         </div>
-
-        <button class="carousel-button next" aria-label="Next project">
-          <i class="fa-solid fa-chevron-right"></i>
-        </button>
       </div>
     </section>
 
     <section id="experience">
-      <h1>Experience</h1>
-      <div class="carousel-container">
-        <button class="carousel-button prev" aria-label="Previous experience">
-          <i class="fa-solid fa-chevron-left"></i>
-        </button>
+       <div class="section-content">
+        <h1>Experience</h1>
+        <div class="carousel-container">
+          <button class="carousel-button prev" aria-label="Previous experience">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
 
-        <div class="carousel-window">
-          <div class="project-card">
-            <h2>Event Catering Staff</h2>
-            <p><strong>Various Roles:</strong> Cloakroom, Bar, Waitering</p>
-            <p>Developed strong interpersonal and adaptability skills in high-paced environments. Ensured safe and ethical handling of personal belongings and sensitive situations.</p>
-          </div>
+          <div class="carousel-window">
+            <div class="project-card">
+              <h2>Event Catering Staff</h2>
+              <div class="card-content">
+                <p><strong>Various Roles:</strong> Cloakroom, Bar, Waitering</p>
+                <p>Developed strong interpersonal and adaptability skills in high-paced environments. Ensured safe and ethical handling of personal belongings and sensitive situations.</p>
+              </div>
+            </div>
           </div>
 
-        <button class="carousel-button next" aria-label="Next experience">
-          <i class="fa-solid fa-chevron-right"></i>
-        </button>
+          <button class="carousel-button next" aria-label="Next experience">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
       </div>
     </section>
 
     <section id="education">
-      <h1>Education</h1>
-      <h2>BSc (Hons) Cyber Security and Forensic Computing</h2>
-      <p>
-        <strong>University of Portsmouth</strong><br>
-        2022–2025
-      </p>
-      <p><strong>Key Modules:</strong></p>
-      <ul class="tag-list">
-        <li>Malware Forensics</li>
-        <li>Security Management</li>
-        <li>Distributed Systems and Security</li>
-        <li>Vulnerability Discovery and Exploitation</li>
-        <li>Business Information Systems Security</li>
-        <li>Forensics Fundamentals</li>
-        <li>Network Servers and Services</li>
-        <li>Operating Systems and Internetworking</li>
-        <li>Ethical Hacking</li>
-        <li>Security and Cryptography</li>
-        <li>Programming</li>
-        <li>Core Computing Concepts</li>
-        <li>Cyber Security and Forensic Computing</li>
-        <li>System Administration</li>
-        <li>Architecture and Operating Systems</li>
-      </ul>
+      <div class="section-content">
+        <h1>Education</h1>
+        <h2>BSc (Hons) Cyber Security and Forensic Computing</h2>
+        <p>
+          <strong>University of Portsmouth</strong><br>
+          2022–2025
+        </p>
+        <p><strong>Key Modules:</strong></p>
+        <ul class="tag-list">
+          <li>Malware Forensics</li>
+          <li>Security Management</li>
+          <li>Distributed Systems and Security</li>
+          <li>Vulnerability Discovery and Exploitation</li>
+          <li>Business Information Systems Security</li>
+          <li>Forensics Fundamentals</li>
+          <li>Network Servers and Services</li>
+          <li>Operating Systems and Internetworking</li>
+          <li>Ethical Hacking</li>
+          <li>Security and Cryptography</li>
+          <li>Programming</li>
+          <li>Core Computing Concepts</li>
+          <li>Cyber Security and Forensic Computing</li>
+          <li>System Administration</li>
+          <li>Architecture and Operating Systems</li>
+        </ul>
+      </div>
     </section>
 
     <section id="contact">
-      <h1>Contact</h1>
-      <div class="contact-icons">
-        <a href="https://www.linkedin.com/in/kye-otsuka" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/kyeotsuka" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+      <div class="section-content">
+        <h1>Contact</h1>
+        <div class="contact-icons">
+          <a href="https://www.linkedin.com/in/kye-otsuka" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="https://github.com/kyeotsuka" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
       </div>
     </section>
   </main>
