@@ -33,8 +33,6 @@
   --border-width-thin: 1px;
   --border-width-thick: 2px;
   --border-style: solid;
-  --radius-main: 0.5rem;
-  --radius-circle: 50%;
 
   /* --- Layout --- */
   --max-width-container: 1100px;
@@ -103,7 +101,6 @@ nav ul {
 nav a {
   display: block;
   padding: var(--space-sm) var(--space-md);
-  border-radius: var(--radius-main);
   color: var(--colour-background); /* White text */
   transition: background-color var(--transition-main);
 }
@@ -123,6 +120,9 @@ main {
   height: 100vh;
   overflow-y: auto;
   scroll-snap-type: y mandatory;
+  background-color: var(--colour-background); /* White */
+  background-image: radial-gradient(var(--colour-foreground) 1px, transparent 1px);
+  background-size: 20px 20px;
 }
 
 section {
@@ -137,12 +137,13 @@ section {
 .section-content {
   width: 100%;
   max-width: var(--max-width-container);
-  background-color: transparent;
+  background-color: var(--colour-background);
   padding: var(--space-xxl) var(--space-xl);
-  border-radius: var(--radius-main);
   max-height: 90vh;
   display: flex;
   flex-direction: column;
+  border: var(--border-width-thin) var(--border-style) var(--colour-foreground);
+  box-shadow: 8px 8px 0 0 var(--colour-foreground);
 }
 
 /* --- Typography --- */
@@ -188,7 +189,6 @@ h2 {
   background-color: transparent;
   color: var(--colour-foreground);
   padding: var(--space-xs) var(--space-md);
-  border-radius: var(--radius-main);
   border: var(--border-width-thin) var(--border-style) var(--colour-foreground);
 }
 
@@ -226,7 +226,6 @@ h2 {
   background-color: var(--colour-foreground);
   color: var(--colour-background);
   border: var(--border-width-thin) var(--border-style) transparent;
-  border-radius: var(--radius-circle);
   width: 44px;
   height: 44px;
   cursor: pointer;
@@ -254,7 +253,6 @@ h2 {
   padding: var(--space-lg);
   background-color: transparent;
   border: var(--border-width-thick) var(--border-style) var(--colour-foreground);
-  border-radius: var(--radius-main);
   font-family: var(--font-family-mono);
   text-align: left;
 }
@@ -292,11 +290,11 @@ h2 {
 }
 .card-content::-webkit-scrollbar-thumb {
   background-color: var(--colour-foreground);
-  opacity: 0.4;
-  border-radius: var(--radius-main);
+  opacity: 0.5;
+  transition: opacity var(--transition-main);
 }
 .card-content::-webkit-scrollbar-thumb:hover {
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 
@@ -316,7 +314,6 @@ h2 {
     height: 3.5rem;
     background-color: var(--colour-foreground); 
     border: var(--border-width-thick) var(--border-style) transparent;
-    border-radius: var(--radius-main);
     text-decoration: none;
     cursor: pointer;
     transition: all var(--transition-main);
@@ -339,6 +336,10 @@ h2 {
 
 /* --- Responsive Styles for Tablets & Mobiles --- */
 @media (max-width: 1024px) {
+  main {
+    background-image: none; /* Turn off pattern on mobile for cleanliness */
+  }
+
   body {
     display: block;
   }
@@ -383,7 +384,6 @@ h2 {
     z-index: 1001;
     background: var(--colour-background);
     border: var(--border-width-thin) var(--border-style) var(--colour-foreground);
-    border-radius: var(--radius-main);
     color: var(--colour-foreground);
     width: 48px;
     height: 48px;
@@ -411,6 +411,8 @@ h2 {
   .section-content {
     padding: var(--space-xl);
     max-height: none;
+    box-shadow: none; /* Remove shadow on mobile for a flatter look */
+    border: none; /* Remove border on mobile for a flatter look */
   }
 
   /* Typography fix for tablets and mobile */
