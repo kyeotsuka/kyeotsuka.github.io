@@ -29,9 +29,10 @@
   --space-xl: 2rem;
   --space-xxl: 3rem;
   
-  /* --- Borders & Radius --- */
-  --border-thin: 1px solid;
-  --border-thick: 2px solid;
+  /* --- Borders & Radius (Corrected) --- */
+  --border-width-thin: 1px;
+  --border-width-thick: 2px;
+  --border-style: solid;
   --radius-main: 0.5rem;
   --radius-circle: 50%;
 
@@ -77,7 +78,7 @@ nav {
   width: var(--nav-width);
   height: 100vh;
   background: var(--colour-foreground); /* Nav is blue */
-  border-right: var(--border-thin) oklch(from var(--colour-background) l s h / 0.2);
+  border-right: var(--border-width-thin) var(--border-style) oklch(from var(--colour-background) l s h / 0.2);
   padding: var(--space-xl);
   display: flex;
   flex-direction: column;
@@ -188,7 +189,7 @@ h2 {
   color: var(--colour-foreground);
   padding: var(--space-xs) var(--space-md);
   border-radius: var(--radius-main);
-  border: var(--border-thin) var(--colour-foreground);
+  border: var(--border-width-thin) var(--border-style) var(--colour-foreground);
 }
 
 /* --- Carousel Styles --- */
@@ -222,9 +223,9 @@ h2 {
 }
 
 .carousel-button {
-  background-color: transparent;
-  color: var(--colour-foreground);
-  border: var(--border-thin) var(--colour-foreground);
+  background-color: var(--colour-foreground);
+  color: var(--colour-background);
+  border: var(--border-width-thin) var(--border-style) transparent;
   border-radius: var(--radius-circle);
   width: 44px;
   height: 44px;
@@ -237,8 +238,9 @@ h2 {
 }
 
 .carousel-button:hover {
-  background-color: var(--colour-foreground);
-  color: var(--colour-background);
+  background-color: transparent;
+  color: var(--colour-foreground);
+  border-color: var(--colour-foreground);
 }
 
 .carousel-button i {
@@ -251,7 +253,7 @@ h2 {
   height: 380px;
   padding: var(--space-lg);
   background-color: transparent;
-  border: var(--border-thick) var(--colour-foreground);
+  border: var(--border-width-thick) var(--border-style) var(--colour-foreground);
   border-radius: var(--radius-main);
   font-family: var(--font-family-mono);
   text-align: left;
@@ -261,14 +263,16 @@ h2 {
   margin-top: auto;
   background-color: var(--colour-foreground);
   color: var(--colour-background);
-  border-color: var(--colour-foreground);
+  border: var(--border-width-thick) var(--border-style) transparent;
   font-weight: var(--font-weight-bold);
   padding: var(--space-xxs) var(--space-sm);
+  transition: all var(--transition-main);
 }
 
 .project-card .btn:hover {
     background-color: transparent;
     color: var(--colour-foreground);
+    border-color: var(--colour-foreground);
 }
 
 .card-content {
@@ -284,14 +288,15 @@ h2 {
   width: 8px;
 }
 .card-content::-webkit-scrollbar-track {
-  background: transparent;
+  background-color: transparent;
 }
 .card-content::-webkit-scrollbar-thumb {
-  background-color: oklch(from var(--colour-foreground) l s h / 0.2);
+  background-color: var(--colour-foreground);
+  opacity: 0.4;
   border-radius: var(--radius-main);
 }
 .card-content::-webkit-scrollbar-thumb:hover {
-  background-color: oklch(from var(--colour-foreground) l s h / 0.4);
+  opacity: 0.6;
 }
 
 
@@ -309,8 +314,8 @@ h2 {
     align-items: center;
     width: 3.5rem;
     height: 3.5rem;
-    background-color: transparent;
-    border: var(--border-thick) var(--colour-foreground);
+    background-color: var(--colour-foreground); 
+    border: var(--border-width-thick) var(--border-style) transparent;
     border-radius: var(--radius-main);
     text-decoration: none;
     cursor: pointer;
@@ -318,17 +323,18 @@ h2 {
 }
 
 .contact-icons a:hover {
-    background-color: var(--colour-foreground);
+    background-color: transparent; 
+    border-color: var(--colour-foreground);
 }
 
 .contact-icons i {
-    color: var(--colour-foreground);
+    color: var(--colour-background); 
     font-size: 2rem;
     transition: color var(--transition-main);
 }
 
 .contact-icons a:hover i {
-    color: var(--colour-background);
+    color: var(--colour-foreground); 
 }
 
 /* --- Responsive Styles for Tablets & Mobiles --- */
@@ -376,7 +382,7 @@ h2 {
     right: var(--space-md);
     z-index: 1001;
     background: var(--colour-background);
-    border: var(--border-thin) var(--colour-foreground);
+    border: var(--border-width-thin) var(--border-style) var(--colour-foreground);
     border-radius: var(--radius-main);
     color: var(--colour-foreground);
     width: 48px;
@@ -399,11 +405,11 @@ h2 {
     height: auto;
     min-height: 100vh;
     scroll-snap-align: none;
-    padding: var(--space-xl); /* Increased padding for tablets */
+    padding: var(--space-xl);
   }
   
   .section-content {
-    padding: var(--space-xl); /* Increased padding for tablets */
+    padding: var(--space-xl);
     max-height: none;
   }
 
@@ -411,10 +417,37 @@ h2 {
   p {
     text-align: left;
     margin-inline: 0;
-    max-width: none; /* Allows paragraph to fill its container */
+    max-width: none;
+  }
+
+  h1 {
+    font-size: 3.5rem; /* Responsive heading size */
+  }
+
+  h2 {
+    font-size: 1.75rem; /* Responsive heading size */
   }
   
   .carousel-button {
+    display: none;
+  }
+}
+
+/* --- Specific styles for very small screens --- */
+@media (max-width: 550px) {
+  h1 {
+    font-size: 2.5rem; /* Further reduce for small phones */
+  }
+
+  .project-card {
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    text-align: center;
+  }
+
+  .project-card .card-content,
+  .project-card .btn {
     display: none;
   }
 }
