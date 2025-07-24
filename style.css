@@ -1,7 +1,7 @@
 :root {
   /* --- Neobrutalist Colour Palette --- */
   --colour-background: #fefce8; /* Bright Yellow */
-  --colour-surface: #ffffff;    /* White */
+  --colour-surface: #fafafa;    /* Off-White */
   --colour-foreground: #1e1e1e; /* Black */
   --colour-accent: #f472b6;     /* Pink */
   --colour-secondary: #a78bfa; /* Violet */
@@ -236,6 +236,8 @@ h2 {
   border: var(--border-width) var(--border-style) var(--colour-foreground);
   font-weight: var(--font-weight-bold);
   transition: all var(--transition-main);
+  user-select: none; /* Disable text selection */
+  cursor: default; /* Use default cursor */
 }
 
 .tag-list li:hover {
