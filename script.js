@@ -22,8 +22,10 @@ document.addEventListener('click', (event) => {
   }
 });
 
-// Close menu when a link is clicked
-navLinks.addEventListener('click', closeMobileMenu);
+// Close menu when a link is clicked inside the full-screen nav
+document.querySelectorAll('#nav-links a').forEach(link => {
+    link.addEventListener('click', closeMobileMenu);
+});
 
 
 // --- Logic to handle ALL carousels on the page ---
@@ -43,4 +45,33 @@ carousels.forEach(carousel => {
       carouselWindow.scrollBy({ left: -carouselWindow.clientWidth, behavior: 'smooth' });
     });
   }
+});
+
+// --- Active Nav Link on Scroll Logic ---
+const sections = document.querySelectorAll('section');
+const navLinksDesktop = document.querySelectorAll('nav:not(#nav-links) a'); // Select only desktop nav links
+
+const observerOptions = {
+    root: document.querySelector('main'), // We are observing scrolling within the main container
+    rootMargin: '0px',
+    threshold: 0.6 // Section is considered "active" when 60% is visible
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const activeId = entry.target.id;
+            navLinksDesktop.forEach(link => {
+                link.classList.remove('active-link');
+                // Get the href attribute and remove the '#' to match the section id
+                if (link.getAttribute('href').substring(1) === activeId) {
+                    link.classList.add('active-link');
+                }
+            });
+        }
+    });
+}, observerOptions);
+
+sections.forEach(section => {
+    observer.observe(section);
 });

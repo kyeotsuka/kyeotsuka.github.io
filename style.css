@@ -1,7 +1,10 @@
 :root {
-  /* --- New Light Mode Colour Palette --- */
-  --colour-background: #f9fdff; /* White */
-  --colour-foreground: #001f3f; /* Navy Blue */
+  /* --- Neobrutalist Colour Palette --- */
+  --colour-background: #fefce8; /* Bright Yellow */
+  --colour-surface: #ffffff;    /* White */
+  --colour-foreground: #1e1e1e; /* Black */
+  --colour-accent: #f472b6;     /* Pink */
+  --colour-secondary: #a78bfa; /* Violet */
 
   /* --- Typography --- */
   --font-family-sans: 'Roboto', sans-serif;
@@ -14,11 +17,11 @@
   /* --- TYPE SCALE --- */
   --font-size-p: 1rem;
   --ratio-content: 1.250;
-  --font-size-h1: 6.854rem;
-  --font-size-h2: calc(var(--font-size-h3) * var(--ratio-content));
-  --font-size-h3: calc(var(--font-size-h4) * var(--ratio-content));
-  --font-size-h4: calc(var(--font-size-p) * var(--ratio-content));
-  --font-size-small: calc(var(--font-size-p) / 1.618);
+  --font-size-h1: 4.5rem; /* Adjusted for style */
+  --font-size-h2: 2.5rem; /* Adjusted for style */
+  --font-size-h3: 1.563rem;
+  --font-size-h4: 1.25rem;
+  --font-size-small: 0.8rem;
 
   /* --- Spacing --- */
   --space-xxs: 0.4rem;
@@ -29,17 +32,18 @@
   --space-xl: 2rem;
   --space-xxl: 3rem;
   
-  /* --- Borders & Radius (Corrected) --- */
-  --border-width-thin: 1px;
-  --border-width-thick: 2px;
+  /* --- Borders & Shadows --- */
+  --border-width: 2px;
   --border-style: solid;
+  --shadow-offset: 6px;
+  --shadow-style: var(--shadow-offset) var(--shadow-offset) 0 0 var(--colour-foreground);
 
   /* --- Layout --- */
   --max-width-container: 1100px;
   --nav-width: 250px;
 
   /* --- Transitions --- */
-  --transition-main: 0.3s ease-in-out;
+  --transition-main: 0.2s ease-in-out;
 }
 
 * {
@@ -50,8 +54,8 @@
 
 /* --- Text Selection Highlighting --- */
 ::selection {
-  background-color: var(--colour-foreground);
-  color: var(--colour-background);
+  background-color: var(--colour-secondary);
+  color: var(--colour-surface);
 }
 
 html {
@@ -63,6 +67,8 @@ body {
   background: var(--colour-background);
   color: var(--colour-foreground);
   font-family: var(--font-family-sans);
+  padding: var(--space-xl);
+  gap: var(--space-xl);
 }
 
 a {
@@ -74,9 +80,10 @@ a {
 /* --- Main Navigation (Sidebar) --- */
 nav {
   width: var(--nav-width);
-  height: 100vh;
-  background: var(--colour-foreground); /* Nav is blue */
-  border-right: var(--border-width-thin) var(--border-style) oklch(from var(--colour-background) l s h / 0.2);
+  height: calc(100vh - var(--space-xl) * 2);
+  background: var(--colour-surface);
+  border: var(--border-width) var(--border-style) var(--colour-foreground);
+  box-shadow: var(--shadow-style);
   padding: var(--space-xl);
   display: flex;
   flex-direction: column;
@@ -85,10 +92,10 @@ nav {
 }
 
 .logo {
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-black);
   font-size: var(--font-size-h4);
   text-align: center;
-  color: var(--colour-background); /* White text */
+  color: var(--colour-foreground);
 }
 
 nav ul {
@@ -101,13 +108,33 @@ nav ul {
 nav a {
   display: block;
   padding: var(--space-sm) var(--space-md);
-  color: var(--colour-background); /* White text */
-  transition: background-color var(--transition-main);
+  color: var(--colour-foreground);
+  background-color: var(--colour-surface);
+  border: var(--border-width) var(--border-style) var(--colour-foreground);
+  text-align: center;
+  font-weight: var(--font-weight-bold);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 0 var(--colour-foreground);
+  transition: all var(--transition-main);
+  position: relative;
 }
 
 nav a:hover {
-  background-color: oklch(from var(--colour-background) l s h / 0.1);
+  box-shadow: 0 0 0 0 var(--colour-foreground);
+  transform: translate(var(--shadow-offset), var(--shadow-offset));
+  background-color: var(--colour-accent);
 }
+
+nav a.active-link::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 4px;
+    background-color: var(--colour-secondary);
+}
+
 
 /* --- Hamburger (Mobile Only) --- */
 .hamburger {
@@ -117,61 +144,78 @@ nav a:hover {
 /* --- Main Content & Scroll Snap --- */
 main {
   flex-grow: 1;
-  height: 100vh;
+  height: calc(100vh - var(--space-xl) * 2);
   overflow-y: auto;
   scroll-snap-type: y mandatory;
-  background-color: var(--colour-background); /* White */
-  background-image: radial-gradient(var(--colour-foreground) 1px, transparent 1px);
-  background-size: 20px 20px;
 }
 
 section {
-  height: 100vh;
+  height: 100%;
   scroll-snap-align: start;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: var(--space-xl);
+  padding-bottom: var(--space-xl); /* Space between sections when snapping */
 }
 
 .section-content {
   width: 100%;
   max-width: var(--max-width-container);
-  background-color: var(--colour-background);
+  background-color: var(--colour-surface);
   padding: var(--space-xxl) var(--space-xl);
-  max-height: 90vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  border: var(--border-width-thin) var(--border-style) var(--colour-foreground);
-  box-shadow: 8px 8px 0 0 var(--colour-foreground);
+  border: var(--border-width) var(--border-style) var(--colour-foreground);
+  box-shadow: var(--shadow-style);
 }
 
 /* --- Typography --- */
 p {
   font-size: var(--font-size-p);
-  line-height: 1.7; /* Increased line spacing */
-  text-align: left; /* No more justify */
-  max-width: 70ch; /* Optimal line length */
-  margin-inline: auto; /* Centre the paragraph block if container is wider */
+  line-height: 1.7;
+  text-align: left;
+  max-width: 70ch;
+  margin-inline: auto;
 }
 h1, h2, h3, h4 {
   text-align: center;
+  font-weight: var(--font-weight-black);
 }
 h1 {
   font-size: var(--font-size-h1);
-  font-weight: var(--font-weight-black);
   margin-bottom: var(--space-lg);
-  color: var(--colour-foreground);
 }
 h2 {
   font-size: var(--font-size-h2);
-  font-weight: var(--font-weight-bold);
   margin-bottom: var(--space-md);
 }
 
-/* --- Spacing Fix for Skills Section --- */
-.tag-list + h2 {
-    margin-top: var(--space-xl);
+/* --- Skills Section Layout --- */
+#skills .section-content {
+  justify-content: center; /* Vertically center the grid */
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg) var(--space-xl);
+  width: 100%;
+}
+
+.skill-category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --- Education Section Layout --- */
+.education-header {
+    text-align: center;
+}
+
+.education-header p {
+    text-align: center;
 }
 
 /* --- Other Components --- */
@@ -186,10 +230,17 @@ h2 {
 }
 
 .tag-list li {
-  background-color: transparent;
+  background-color: var(--colour-surface);
   color: var(--colour-foreground);
   padding: var(--space-xs) var(--space-md);
-  border: var(--border-width-thin) var(--border-style) var(--colour-foreground);
+  border: var(--border-width) var(--border-style) var(--colour-foreground);
+  font-weight: var(--font-weight-bold);
+  transition: all var(--transition-main);
+}
+
+.tag-list li:hover {
+    background-color: var(--colour-secondary);
+    color: var(--colour-surface);
 }
 
 /* --- Carousel Styles --- */
@@ -223,9 +274,9 @@ h2 {
 }
 
 .carousel-button {
-  background-color: var(--colour-foreground);
-  color: var(--colour-background);
-  border: var(--border-width-thin) var(--border-style) transparent;
+  background-color: var(--colour-surface);
+  color: var(--colour-foreground);
+  border: var(--border-width) var(--border-style) var(--colour-foreground);
   width: 44px;
   height: 44px;
   cursor: pointer;
@@ -234,12 +285,13 @@ h2 {
   justify-content: center;
   flex-shrink: 0;
   transition: all var(--transition-main);
+  box-shadow: var(--shadow-style);
 }
 
 .carousel-button:hover {
-  background-color: transparent;
-  color: var(--colour-foreground);
-  border-color: var(--colour-foreground);
+  box-shadow: 0 0 0 0 var(--colour-foreground);
+  transform: translate(var(--shadow-offset), var(--shadow-offset));
+  background-color: var(--colour-accent);
 }
 
 .carousel-button i {
@@ -251,26 +303,28 @@ h2 {
   flex-direction: column;
   height: 380px;
   padding: var(--space-lg);
-  background-color: transparent;
-  border: var(--border-width-thick) var(--border-style) var(--colour-foreground);
+  background-color: var(--colour-surface);
+  border: var(--border-width) var(--border-style) var(--colour-foreground);
   font-family: var(--font-family-mono);
   text-align: left;
 }
 
 .project-card .btn {
   margin-top: auto;
-  background-color: var(--colour-foreground);
-  color: var(--colour-background);
-  border: var(--border-width-thick) var(--border-style) transparent;
+  background-color: var(--colour-surface);
+  color: var(--colour-foreground);
+  border: var(--border-width) var(--border-style) var(--colour-foreground);
   font-weight: var(--font-weight-bold);
-  padding: var(--space-xxs) var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
   transition: all var(--transition-main);
+  box-shadow: var(--shadow-style);
+  align-self: flex-start;
 }
 
 .project-card .btn:hover {
-    background-color: transparent;
-    color: var(--colour-foreground);
-    border-color: var(--colour-foreground);
+    box-shadow: 0 0 0 0 var(--colour-foreground);
+    transform: translate(var(--shadow-offset), var(--shadow-offset));
+    background-color: var(--colour-accent);
 }
 
 .card-content {
@@ -283,18 +337,14 @@ h2 {
 
 /* Themed Scrollbar */
 .card-content::-webkit-scrollbar {
-  width: 8px;
+  width: 12px;
 }
 .card-content::-webkit-scrollbar-track {
-  background-color: transparent;
+  background-color: var(--colour-surface);
 }
 .card-content::-webkit-scrollbar-thumb {
   background-color: var(--colour-foreground);
-  opacity: 0.5;
-  transition: opacity var(--transition-main);
-}
-.card-content::-webkit-scrollbar-thumb:hover {
-  opacity: 0.8;
+  border: 2px solid var(--colour-surface);
 }
 
 
@@ -312,66 +362,76 @@ h2 {
     align-items: center;
     width: 3.5rem;
     height: 3.5rem;
-    background-color: var(--colour-foreground); 
-    border: var(--border-width-thick) var(--border-style) transparent;
+    background-color: var(--colour-surface); 
+    border: var(--border-width) var(--border-style) var(--colour-foreground);
     text-decoration: none;
     cursor: pointer;
     transition: all var(--transition-main);
+    box-shadow: var(--shadow-style);
 }
 
 .contact-icons a:hover {
-    background-color: transparent; 
-    border-color: var(--colour-foreground);
+    box-shadow: 0 0 0 0 var(--colour-foreground);
+    transform: translate(var(--shadow-offset), var(--shadow-offset));
+    background-color: var(--colour-accent);
 }
 
 .contact-icons i {
-    color: var(--colour-background); 
+    color: var(--colour-foreground); 
     font-size: 2rem;
-    transition: color var(--transition-main);
 }
 
-.contact-icons a:hover i {
-    color: var(--colour-foreground); 
-}
 
 /* --- Responsive Styles for Tablets & Mobiles --- */
 @media (max-width: 1024px) {
-  main {
-    background-image: none; /* Turn off pattern on mobile for cleanliness */
-  }
-
   body {
     display: block;
+    padding: 0;
   }
 
-  /* Mobile Navigation */
+  main {
+    height: auto;
+    overflow-y: visible;
+    scroll-snap-type: none;
+  }
+
+  /* --- Full-Screen Mobile Navigation --- */
   nav {
+    display: none; /* Hide sidebar on mobile */
+  }
+
+  #nav-links {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: 1000;
-    background: var(--colour-foreground);
+    background: var(--colour-surface);
     transform: translateX(-100%);
     transition: transform var(--transition-main);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: var(--space-xl);
   }
 
-  nav.active {
+  #nav-links.active {
     transform: translateX(0);
   }
   
-  nav ul {
+  #nav-links ul {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg); /* Added gap for spacing */
   }
 
-  nav a {
-    font-size: var(--font-size-h3);
-    padding: var(--space-md);
+  #nav-links a {
+    font-size: var(--font-size-h4); /* Adjusted size */
+    padding: var(--space-md) var(--space-xl);
+    width: 250px; /* Give buttons a consistent width */
   }
 
   .hamburger {
@@ -382,37 +442,43 @@ h2 {
     top: var(--space-md);
     right: var(--space-md);
     z-index: 1001;
-    background: var(--colour-background);
-    border: var(--border-width-thin) var(--border-style) var(--colour-foreground);
+    background: var(--colour-surface);
+    border: var(--border-width) var(--border-style) var(--colour-foreground);
     color: var(--colour-foreground);
     width: 48px;
     height: 48px;
     cursor: pointer;
   }
-  .hamburger i { font-size: 1.75rem; }
-  .hamburger .icon-close { display: none; }
-  .hamburger.is-active .icon-close { display: block; }
-  .hamburger.is-active .icon-menu { display: none; }
-
-  /* Layout and scroll snap adjustments */
-  main {
-    height: auto;
-    overflow-y: visible;
-    scroll-snap-type: none;
+  
+  /* --- Hamburger Icon Toggle Fix --- */
+  .hamburger .icon-close {
+    display: none;
+  }
+  .hamburger.is-active .icon-close {
+    display: block;
+  }
+  .hamburger.is-active .icon-menu {
+    display: none;
   }
 
+  /* Layout and scroll snap adjustments */
   section {
     height: auto;
     min-height: 100vh;
     scroll-snap-align: none;
     padding: var(--space-xl);
+    padding-top: 80px; /* Add space at the top for the fixed hamburger */
   }
   
   .section-content {
     padding: var(--space-xl);
-    max-height: none;
-    box-shadow: none; /* Remove shadow on mobile for a flatter look */
-    border: none; /* Remove border on mobile for a flatter look */
+    height: auto;
+    border: var(--border-width) var(--border-style) var(--colour-foreground);
+    box-shadow: var(--shadow-style);
+  }
+  
+  .skills-grid {
+      grid-template-columns: 1fr; /* Single column on mobile */
   }
 
   /* Typography fix for tablets and mobile */
@@ -423,11 +489,11 @@ h2 {
   }
 
   h1 {
-    font-size: 3.5rem; /* Responsive heading size */
+    font-size: 3rem;
   }
 
   h2 {
-    font-size: 1.75rem; /* Responsive heading size */
+    font-size: 2rem;
   }
   
   .carousel-button {
@@ -437,19 +503,26 @@ h2 {
 
 /* --- Specific styles for very small screens --- */
 @media (max-width: 550px) {
+  body {
+      padding: var(--space-sm);
+  }
+    
   h1 {
-    font-size: 2.5rem; /* Further reduce for small phones */
+    font-size: 2.5rem;
   }
 
   .project-card {
-    justify-content: center;
+    justify-content: space-between; /* Changed */
     align-items: center;
     min-height: 200px;
     text-align: center;
   }
 
-  .project-card .card-content,
+  .project-card .card-content {
+    display: none; /* Hide the description */
+  }
+
   .project-card .btn {
-    display: none;
+      align-self: center; /* Center the button */
   }
 }
