@@ -540,9 +540,6 @@ h2 {
   .section-content {
     padding: var(--space-xl);
     height: auto;
-    border: var(--border-width) solid var(--colour-primary);
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-soft);
     width: 100%;
     justify-content: flex-start;
   }
@@ -596,10 +593,6 @@ h2 {
 
 /* --- Specific styles for very small screens --- */
 @media (max-width: 550px) {
-  body {
-      padding: var(--space-sm);
-  }
-    
   h1 {
     font-size: 2.5rem;
   }
