@@ -12,7 +12,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- The Hamburger is now separate for mobile-first control -->
   <button class="hamburger" id="hamburger" aria-label="Menu" aria-controls="nav-links" aria-expanded="false">
     <i class="fa-solid fa-bars icon-menu"></i>
     <i class="fa-solid fa-xmark icon-close"></i>
@@ -28,6 +27,10 @@
       <li><a href="#education">Education</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+    <button class="dark-mode-toggle" aria-label="Toggle dark mode">
+      <i class="fa-solid fa-moon icon-moon"></i>
+      <i class="fa-solid fa-sun icon-sun"></i>
+    </button>
   </nav>
   
   <main>
@@ -164,31 +167,36 @@
     <section id="education">
       <div class="section-content">
         <h1>Education</h1>
-        <div class="education-header">
-          <h2>BSc (Hons) Cyber Security and Forensic Computing <br> (First Class Honours)</h2>
-          <p>
-            <strong>University of Portsmouth</strong><br>
-            2022–2025
-          </p>
-          <p><strong>Key Modules:</strong></p>
+        <div class="education-layout">
+          <div class="education-details">
+            <h2>BSc (Hons) Cyber Security and Forensic Computing</h2>
+            <p class="degree-grade">(First Class Honours)</p>
+            <p class="university-details">
+              <strong>University of Portsmouth</strong><br>
+              2022–2025
+            </p>
+          </div>
+          <div class="education-modules">
+            <h3>Key Modules</h3>
+            <ul class="tag-list">
+              <li>Malware Forensics</li>
+              <li>Security Management</li>
+              <li>Distributed Systems and Security</li>
+              <li>Vulnerability Discovery and Exploitation</li>
+              <li>Business Information Systems Security</li>
+              <li>Forensics Fundamentals</li>
+              <li>Network Servers and Services</li>
+              <li>Operating Systems and Internetworking</li>
+              <li>Ethical Hacking</li>
+              <li>Security and Cryptography</li>
+              <li>Programming</li>
+              <li>Core Computing Concepts</li>
+              <li>Cyber Security and Forensic Computing</li>
+              <li>System Administration</li>
+              <li>Architecture and Operating Systems</li>
+            </ul>
+          </div>
         </div>
-        <ul class="tag-list">
-          <li>Malware Forensics</li>
-          <li>Security Management</li>
-          <li>Distributed Systems and Security</li>
-          <li>Vulnerability Discovery and Exploitation</li>
-          <li>Business Information Systems Security</li>
-          <li>Forensics Fundamentals</li>
-          <li>Network Servers and Services</li>
-          <li>Operating Systems and Internetworking</li>
-          <li>Ethical Hacking</li>
-          <li>Security and Cryptography</li>
-          <li>Programming</li>
-          <li>Core Computing Concepts</li>
-          <li>Cyber Security and Forensic Computing</li>
-          <li>System Administration</li>
-          <li>Architecture and Operating Systems</li>
-        </ul>
       </div>
     </section>
 

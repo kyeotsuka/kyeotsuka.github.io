@@ -75,3 +75,22 @@ const observer = new IntersectionObserver((entries) => {
 sections.forEach(section => {
     observer.observe(section);
 });
+
+// --- Dark Mode Switcher Logic ---
+const darkModeToggle = document.querySelector('.dark-mode-toggle');
+
+// Check for saved theme in localStorage and apply it
+if (localStorage.getItem('theme') === 'dark') {
+  document.body.classList.add('dark-theme');
+}
+
+darkModeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark-theme');
+
+  // Save the user's preference to localStorage
+  if (document.body.classList.contains('dark-theme')) {
+    localStorage.setItem('theme', 'dark');
+  } else {
+    localStorage.removeItem('theme');
+  }
+});

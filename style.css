@@ -1,7 +1,7 @@
 :root {
-  /* --- Modern Colour Palette (CHANGED) --- */
-  --colour-primary: #2d3748;   /* The dark foreground colour */
-  --colour-background: #fdfdfd; /* CHANGED: A very, very light off-white */
+  /* --- Modern Colour Palette --- */
+  --colour-primary: #2d3748;
+  --colour-background: #fdfdfd;
 
   /* --- Typography --- */
   --font-family-sans: 'Roboto', sans-serif;
@@ -34,14 +34,13 @@
   --border-style: solid;
   --border-radius: 8px;
   --shadow-soft: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lifted: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 
   /* --- Layout --- */
   --max-width-container: 1100px;
   --nav-width: 250px;
 
   /* --- Transitions --- */
-  --transition-main: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-color: 0.2s ease-out;
 }
 
 * {
@@ -87,9 +86,10 @@ nav {
   padding: var(--space-xl);
   display: flex;
   flex-direction: column;
-  justify-content: center; /* ADDED: This vertically centres the nav content */
+  justify-content: center;
   gap: var(--space-xxl);
   flex-shrink: 0;
+  position: relative;
 }
 
 .logo {
@@ -111,11 +111,11 @@ nav a {
   padding: var(--space-sm) var(--space-md);
   color: var(--colour-primary);
   background-color: transparent;
-  border: var(--border-width) solid var(--colour-primary);
+  border: var(--border-width) solid transparent;
   border-radius: var(--border-radius);
   text-align: center;
   font-weight: var(--font-weight-bold);
-  transition: all var(--transition-main);
+  transition: background-color var(--transition-color), color var(--transition-color), border-color var(--transition-color);
   position: relative;
 }
 
@@ -123,7 +123,7 @@ nav a:hover,
 nav a.active-link {
   background-color: var(--colour-primary);
   color: var(--colour-background);
-  transform: translateY(-2px);
+  border-color: var(--colour-primary);
 }
 
 nav a.active-link::after {
@@ -221,12 +221,59 @@ h2 {
 }
 
 /* --- Education Section Layout --- */
-.education-header {
-    text-align: center;
+.education-layout {
+  display: flex;
+  gap: var(--space-xxl);
+  align-items: flex-start;
+  width: 100%;
+  margin-top: var(--space-lg);
 }
 
-.education-header p {
-    text-align: center;
+.education-details,
+.education-modules {
+  flex: 1;
+}
+
+.education-details h2,
+.education-details p {
+  text-align: left;
+}
+
+.education-details h2 {
+  font-size: var(--font-size-h3);
+  margin-bottom: var(--space-xs);
+}
+
+.degree-grade {
+  font-size: var(--font-size-p);
+  font-style: italic;
+  margin-bottom: var(--space-md);
+  opacity: 0.8;
+}
+
+.university-details {
+  line-height: 1.6;
+}
+
+.education-modules h3 {
+  text-align: left;
+  font-size: var(--font-size-h4);
+  margin-bottom: var(--space-md);
+  font-weight: var(--font-weight-bold);
+}
+
+#education .tag-list {
+  justify-content: flex-start;
+  display: block;
+  column-count: 2;
+  column-gap: var(--space-md);
+  padding: 0;
+  margin: 0;
+}
+
+#education .tag-list li {
+  margin-bottom: var(--space-sm);
+  break-inside: avoid;
 }
 
 /* --- Other Components --- */
@@ -247,7 +294,7 @@ h2 {
   border: var(--border-width) solid var(--colour-primary);
   border-radius: var(--border-radius);
   font-weight: var(--font-weight-bold);
-  transition: all var(--transition-main);
+  transition: background-color var(--transition-color), color var(--transition-color);
   user-select: none;
   cursor: default;
 }
@@ -299,15 +346,13 @@ h2 {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  transition: all var(--transition-main);
+  transition: background-color var(--transition-color), color var(--transition-color);
   box-shadow: var(--shadow-soft);
 }
 
 .carousel-button:hover {
   background-color: var(--colour-primary);
   color: var(--colour-background);
-  transform: scale(1.05);
-  box-shadow: var(--shadow-lifted);
 }
 
 .carousel-button i {
@@ -334,14 +379,12 @@ h2 {
   border-radius: var(--border-radius);
   font-weight: var(--font-weight-bold);
   padding: var(--space-sm) var(--space-md);
-  transition: all var(--transition-main);
+  transition: background-color var(--transition-color), color var(--transition-color);
   box-shadow: var(--shadow-soft);
   align-self: flex-start;
 }
 
 .project-card .btn:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lifted);
     background-color: var(--colour-background);
     color: var(--colour-primary);
 }
@@ -388,13 +431,11 @@ h2 {
     border-radius: var(--border-radius);
     text-decoration: none;
     cursor: pointer;
-    transition: all var(--transition-main);
+    transition: background-color var(--transition-color);
     box-shadow: var(--shadow-soft);
 }
 
 .contact-icons a:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-lifted);
     background-color: var(--colour-primary);
 }
 
@@ -405,7 +446,7 @@ h2 {
 .contact-icons i {
     color: var(--colour-primary); 
     font-size: 1.75rem;
-    transition: color var(--transition-main);
+    transition: color var(--transition-color);
 }
 
 
@@ -436,7 +477,7 @@ h2 {
     z-index: 1000;
     background: var(--colour-background);
     transform: translateX(-100%);
-    transition: transform var(--transition-main);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -510,6 +551,30 @@ h2 {
       grid-template-columns: 1fr;
   }
 
+  .education-layout {
+    flex-direction: column;
+    gap: var(--space-xl);
+    align-items: center;
+  }
+
+  .education-details,
+  .education-modules {
+    width: 100%;
+    text-align: center;
+  }
+
+  .education-details h2,
+  .education-details p,
+  .education-modules h3 {
+    text-align: center;
+  }
+
+  #education .tag-list {
+    display: flex;
+    justify-content: center;
+    column-count: auto;
+  }
+
   p {
     text-align: left;
     margin-inline: 0;
@@ -553,4 +618,46 @@ h2 {
   .project-card .btn {
       align-self: center;
   }
+}
+
+/* --- Dark Mode Theme & Toggle --- */
+body.dark-theme {
+  --colour-primary: #fdfdfd;
+  --colour-background: #2d3748;
+}
+
+.dark-mode-toggle {
+  position: absolute;
+  bottom: var(--space-xl);
+  left: 50%;
+  transform: translateX(-50%);
+  background: transparent;
+  border: var(--border-width) solid var(--colour-primary);
+  color: var(--colour-primary);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  transition: background-color var(--transition-color), color var(--transition-color);
+}
+
+.dark-mode-toggle:hover {
+  background-color: var(--colour-primary);
+  color: var(--colour-background);
+}
+
+.dark-mode-toggle .icon-sun {
+  display: none;
+}
+
+.dark-theme .dark-mode-toggle .icon-sun {
+  display: block;
+}
+
+.dark-theme .dark-mode-toggle .icon-moon {
+  display: none;
 }
