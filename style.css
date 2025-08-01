@@ -398,7 +398,6 @@ h2 {
   padding-right: var(--space-sm);
 }
 
-/* Themed Scrollbar */
 .card-content::-webkit-scrollbar {
   width: 12px;
 }
@@ -412,7 +411,70 @@ h2 {
   border: 3px solid var(--colour-background);
 }
 
+/* --- Blog Section Layout --- */
+.blog-post-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  width: 100%;
+  max-width: 80ch;
+  margin-inline: auto;
+  overflow-y: auto;
+  /* Set height to exactly fit two 180px cards, one 1.5rem gap, and 0.5rem padding top/bottom */
+  height: calc((180px * 2) + var(--space-lg) + (var(--space-xs) * 2));
+  padding: var(--space-xs);
+  margin-top: var(--space-lg);
+}
 
+.blog-post-card {
+  display: block;
+  padding: var(--space-lg);
+  border: var(--border-width) solid var(--colour-primary);
+  border-radius: var(--border-radius);
+  background-color: var(--colour-background);
+  text-decoration: none;
+  color: var(--colour-primary);
+  transition: border-color 0.2s ease-out;
+  flex-shrink: 0; /* Prevent cards from shrinking */
+  height: 180px; /* Set a fixed, uniform height */
+  overflow: hidden;
+}
+
+.blog-post-card h2 {
+  font-size: var(--font-size-h4);
+  text-align: left;
+  margin-bottom: var(--space-xs);
+}
+
+.blog-post-card .post-meta {
+  font-size: var(--font-size-small);
+  opacity: 0.7;
+  margin-bottom: var(--space-md);
+  text-align: left;
+}
+
+.blog-post-card .post-excerpt {
+  font-size: var(--font-size-p);
+  line-height: 1.6;
+  text-align: left;
+  max-width: none;
+}
+
+.blog-post-list::-webkit-scrollbar {
+  width: 12px;
+}
+.blog-post-list::-webkit-scrollbar-track {
+  background-color: var(--colour-background);
+}
+.blog-post-list::-webkit-scrollbar-thumb {
+  background-color: var(--colour-primary);
+  opacity: 0.5;
+  border-radius: 6px;
+  border: 3px solid var(--colour-background);
+}
+
+
+/* --- Contact Section --- */
 .contact-icons {
   display: flex;
   gap: var(--space-lg);
@@ -463,6 +525,17 @@ h2 {
     height: auto;
     overflow-y: visible;
     scroll-snap-type: none;
+  }
+  
+  #blog .blog-post-list {
+      overflow-y: visible;
+      padding-right: 0;
+      height: auto;
+  }
+
+  .blog-post-card {
+      height: auto;
+      min-height: 200px;
   }
 
   nav {

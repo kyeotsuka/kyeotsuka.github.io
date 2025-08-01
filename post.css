@@ -1,0 +1,153 @@
+/* --- Inherited Variables & Theme from style.css --- */
+:root {
+  /* --- Modern Colour Palette --- */
+  --colour-primary: #2d3748;
+  --colour-background: #fdfdfd;
+
+  /* --- Typography --- */
+  --font-family-sans: 'Roboto', sans-serif;
+  --font-family-mono: "Fira Code", "Source Code Pro", "IBM Plex Mono", Consolas, "Courier New", monospace;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+
+  /* --- TYPE SCALE --- */
+  --font-size-p: 1rem;
+  --font-size-h1: 3.75rem;
+  --font-size-h2: 2.25rem;
+  --font-size-h3: 1.5rem;
+  --font-size-h4: 1.25rem;
+  --font-size-small: 0.8rem;
+
+  /* --- Spacing --- */
+  --space-xxs: 0.4rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.8rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-xxl: 3rem;
+  
+  /* --- Borders & Shadows --- */
+  --border-width: 1px;
+  --border-style: solid;
+  --border-radius: 8px;
+  --shadow-soft: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+/* --- Dark Mode Theme --- */
+body.dark-theme {
+  --colour-primary: #fdfdfd;
+  --colour-background: #2d3748;
+}
+
+
+/* --- Base Blog Post Styles --- */
+body {
+    background: var(--colour-background);
+    color: var(--colour-primary);
+    font-family: var(--font-family-sans);
+    margin: 0;
+    padding: 0;
+}
+
+/* --- Themed Scrollbar for Blog Post Page --- */
+html::-webkit-scrollbar {
+  width: 12px;
+}
+html::-webkit-scrollbar-track {
+  background-color: var(--colour-background);
+}
+html::-webkit-scrollbar-thumb {
+  background-color: var(--colour-primary);
+  opacity: 0.5;
+  border-radius: 6px;
+  border: 3px solid var(--colour-background);
+}
+
+/* --- Standalone Back Button --- */
+.back-link-button {
+    position: fixed;
+    top: var(--space-lg);
+    left: var(--space-lg);
+    z-index: 100;
+
+    /* Styling to match main site buttons */
+    background-color: var(--colour-background);
+    color: var(--colour-primary);
+    border: var(--border-width) solid var(--colour-primary);
+    border-radius: var(--border-radius);
+    font-weight: var(--font-weight-bold);
+    padding: var(--space-sm) var(--space-md);
+    text-decoration: none;
+    box-shadow: var(--shadow-soft);
+    transition: background-color 0.2s ease-out, color 0.2s ease-out;
+}
+
+.back-link-button:hover {
+    background-color: var(--colour-primary);
+    color: var(--colour-background);
+}
+
+
+/* --- Blog Post Article Layout --- */
+.post-main {
+    padding: var(--space-xl);
+    padding-top: calc(var(--space-xl) * 4); /* Extra top padding to clear the fixed button */
+    max-width: 80ch; /* Optimal width for reading text */
+    margin: 0 auto; /* Centre the content */
+}
+
+.post-content {
+    width: 100%;
+}
+
+.post-header {
+    margin-bottom: var(--space-xl);
+    border-bottom: var(--border-width) solid var(--colour-primary);
+    padding-bottom: var(--space-lg);
+}
+
+.post-header h1 {
+    font-size: var(--font-size-h1);
+    text-align: left;
+    margin-bottom: var(--space-md);
+    font-weight: var(--font-weight-black);
+}
+
+.post-header .post-meta {
+    font-size: var(--font-size-p);
+    text-align: left;
+    opacity: 0.7;
+}
+
+/* Ensure paragraphs and headings in the article have some space */
+.post-content p,
+.post-content h2,
+.post-content h3 {
+    margin-bottom: var(--space-lg);
+    text-align: left;
+    font-size: var(--font-size-p);
+    line-height: 1.8;
+}
+
+.post-content h2,
+.post-content h3 {
+    font-size: var(--font-size-h3);
+    margin-top: var(--space-xl);
+    font-weight: var(--font-weight-bold);
+}
+
+.back-to-top-link {
+    display: block;
+    text-align: center;
+    margin-top: var(--space-xxl);
+    color: var(--colour-primary);
+    text-decoration: none;
+    font-weight: var(--font-weight-bold);
+}
+
+.back-to-top-link:hover {
+    text-decoration: underline;
+}

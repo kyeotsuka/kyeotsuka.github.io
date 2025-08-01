@@ -94,3 +94,84 @@ darkModeToggle.addEventListener('click', () => {
     localStorage.removeItem('theme');
   }
 });
+
+
+// --- NEW: Dynamic Blog Post Excerpt Fetcher ---
+
+/**
+ * This function runs when the page loads. It finds all blog post cards
+ * and dynamically replaces their placeholder excerpts with real content
+ * fetched from the actual blog post files.
+ */
+document.addEventListener('DOMContentLoaded', () => {
+  const blogPostCards = document.querySelectorAll('#blog .blog-post-card');
+
+  blogPostCards.forEach(card => {
+    const postUrl = card.getAttribute('href');
+    const titleElement = card.querySelector('h2'); // Get the title element
+    const metaElement = card.querySelector('.post-meta'); // Get the meta element
+    const excerptElement = card.querySelector('.post-excerpt');
+
+    if (!postUrl || !titleElement || !excerptElement || !metaElement) {
+      return; // Skip if the card is malformed
+    }
+
+    // Fetch the content of the linked blog post
+    fetch(postUrl)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok.');
+        }
+        return response.text();
+      })
+      .then(html => {
+        // Parse the fetched HTML to find the article content
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        
+        // --- Fetch and set the title ---
+        const fetchedTitle = doc.querySelector('.post-header h1');
+        if (fetchedTitle) {
+            titleElement.textContent = fetchedTitle.textContent;
+        }
+
+        // --- Fetch and set the meta data (date, read time) ---
+        const fetchedMeta = doc.querySelector('.post-header .post-meta');
+        if (fetchedMeta) {
+            metaElement.innerHTML = fetchedMeta.innerHTML; // Use innerHTML to keep the <time> tag
+        }
+
+        // --- Fetch and set the excerpt ---
+        const contentContainer = doc.querySelector('.post-content');
+        let fullText = '';
+
+        if (contentContainer) {
+            // Iterate over all direct children of the content container
+            for (const child of contentContainer.children) {
+                // Explicitly skip the header element to avoid grabbing the title or meta
+                if (child.tagName.toLowerCase() === 'header') {
+                    continue;
+                }
+                // Append the text of other elements (p, h2, h3, etc.)
+                fullText += child.textContent + ' ';
+            }
+        }
+
+        fullText = fullText.trim(); // Clean up leading/trailing spaces
+
+        if (fullText) {
+          // Create a snippet and add an ellipsis
+          const maxLength = 220; // You can adjust this length
+          if (fullText.length > maxLength) {
+            // Trim to length, then remove any partial words or trailing spaces/punctuation
+            fullText = fullText.substring(0, maxLength).trim().replace(/[\s,.]+$/, "") + '...';
+          }
+          excerptElement.textContent = fullText;
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching blog post excerpt:', error);
+        // If fetching fails, the original placeholder text remains
+      });
+  });
+});
