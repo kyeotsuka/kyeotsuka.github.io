@@ -163,6 +163,7 @@ main::-webkit-scrollbar-thumb {
 section {
   height: 100%;
   scroll-snap-align: start;
+  /* scroll-snap-stop: always; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -328,7 +329,7 @@ h2 {
   display: none;
 }
 
-.carousel-window .project-card {
+.carousel-window .content-card {
   flex: 0 0 100%;
   scroll-snap-align: center;
   scroll-snap-stop: always;
@@ -359,7 +360,7 @@ h2 {
   font-size: 1rem;
 }
 
-.project-card {
+.content-card {
   display: flex;
   flex-direction: column;
   height: 380px;
@@ -371,7 +372,7 @@ h2 {
   text-align: left;
 }
 
-.project-card .btn {
+.content-card .btn {
   margin-top: auto;
   background-color: var(--colour-primary);
   color: var(--colour-background);
@@ -384,7 +385,7 @@ h2 {
   align-self: flex-start;
 }
 
-.project-card .btn:hover {
+.content-card .btn:hover {
     background-color: var(--colour-background);
     color: var(--colour-primary);
 }
@@ -597,18 +598,18 @@ h2 {
     font-size: 2.5rem;
   }
 
-  .project-card {
+  .content-card {
     justify-content: space-between;
     align-items: center;
     min-height: 200px;
     text-align: center;
   }
 
-  .project-card .card-content {
+  .content-card .card-content {
     display: none;
   }
 
-  .project-card .btn {
+  .content-card .btn {
       align-self: center;
   }
 }
