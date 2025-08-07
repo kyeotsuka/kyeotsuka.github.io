@@ -8,6 +8,8 @@ tags:
   - programming
 ---
 
+This post will talk about my experience making the Fibonacci Sequence generator in C.
+
 # Coding the base logic
 
 I used a [YouTube video](https://www.youtube.com/watch?v=07rT0g_N5eY) by Portfolio Courses to learn the basic logic for generating the Fibonacci sequence in C. I’ve made a few small changes, such as renaming functions and allowing the user to choose between iterative and recursive methods, but the core structure remains similar to the video.
@@ -253,3 +255,8 @@ int main(void) {
     return 0;
 }
 ```
+
+## View project on GitHub
+
+Feel free to check out the project on GitHub by following the link below.
+[View project on GitHub](https://github.com/kyeotsuka/FibonacciSequence)
