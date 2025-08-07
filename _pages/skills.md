@@ -7,6 +7,8 @@ permalink: /skills/
 - Python
 - Java
 - C
+- C#
+- JavaScript
 
 ## Tools & Technologies
 - Wireshark
