@@ -4,7 +4,7 @@ permalink: /experience/
 ---
 
 ## Private Maths Tutor
-**Self-Employed** | *July 2025 – Current*
+**Self-Employed** | *July 2025 – Aug 2025*
 - Provided one-to-one tutoring to a GCSE student, strengthening their understanding of core mathematical concepts.
 - Developed personalised lesson plans and learning materials tailored to the student's specific needs and learning style.
 - Simplified complex topics, such as algebra and geometry, to improve the student's confidence and problem-solving abilities.
