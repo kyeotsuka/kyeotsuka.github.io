@@ -1,5 +1,5 @@
 ---
-title: "Responsive Portfolio Website"
+title: "Portfolio Website From Scratch"
 excerpt: "A clean, single-page portfolio website built from scratch to showcase my skills, projects, and experience."
 ---
 
